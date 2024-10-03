@@ -1,0 +1,88 @@
+.container {
+  text-align: center;
+  color: white;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #171a26;
+}
+
+.cards {
+  display: flex;
+  /* justify-content: space-around; */
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  border-radius: 10px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.careers {
+  /* background: linear-gradient(
+    135deg,
+    #453e40 0%,
+    #3d3f48 25%,
+    #5b7c80 50%,
+    #3b5f63 75%,
+    #3c4a54 100%
+  ); */
+  background: linear-gradient( #171a26, #bfc5d4, #171a26 );
+}
+
+.franchise {
+  /* background: linear-gradient(
+    135deg,
+    rgba(50, 0, 50, 0.7) 0%,
+    rgba(100, 0, 100, 0.7) 100%
+  ); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* background: linear-gradient(
+    135deg,
+    #2d303d 0%,
+    #373844 25%,
+    #393543 50%,
+    #383942 75%,
+    #503451 100%
+  ); */
+  background: linear-gradient(#171a26, #bfc5d4, #171a26 );
+}
+
+.images {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.images img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.learnMore {
+  display: block;
+  font-weight: 700;
+  margin-top: 1rem;
+  /* color: rgb(112, 112, 170); */
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.learnMore:hover {
+  text-decoration: underline;
+}
+.dream {
+  background: linear-gradient(135deg, #d8b03f 0%, #b97e65 50%, #c7639b 100%);
+  font-weight: 500;
+  /* background: linear-gradient(90deg, #ffcc00, #ff0066); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

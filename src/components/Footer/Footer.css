@@ -1,0 +1,109 @@
+.Footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+}
+
+.MainDetails {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+}
+.MainDetails h1{
+    font-size: 30px;
+}
+
+.Element-container {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    justify-content: space-around;
+}
+
+.Element-group {
+    display: flex;
+    flex-direction: column;
+    column-gap:0ch;
+}
+
+.Element-group a {
+    color: aliceblue;
+    text-decoration: none;
+    margin-bottom: 0px;
+}
+
+.Element-group a:hover {
+    text-decoration: underline;
+}
+
+.app-store-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+}
+
+.app-store-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.app-store-buttons a {
+    margin: 10px 0;
+}
+
+.app-store-img, .google-play-img {
+    width: 200px;
+    height: auto;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+}
+
+.social-icons svg {
+    color: #fff;
+    font-size: 30px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.social-icons svg:hover {
+    color: #bbb;
+}
+
+.Footer-EndLine{
+    width: 100%;
+    height: 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .Footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .Element-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .MainDetails {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

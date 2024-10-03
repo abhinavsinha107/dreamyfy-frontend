@@ -1,0 +1,127 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 100%;
+  padding-left: 180px;
+  padding-right: 180px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  height: 600px;
+  background-color: #171a26;
+  /* border-radius: 20px; */
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  padding: 20px;
+  height: 500px;
+  color: white;
+  border-right: 1px solid #171a26;
+  /* background-color: #4a4a5a;  */
+  background: linear-gradient(to bottom, #171a26, #bfc5d4);
+  border-radius: 20px 0 0 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  height: 500px;
+  padding: 20px;
+  width: 75%;
+  /* background-color: #2d2d40;*/
+  background: linear-gradient(to bottom, #171a26, #bfc5d4);
+  /* 131a2c */
+  border-radius: 0 20px 20px 0;
+}
+
+.category {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  color: white;
+  font-size: 1.2em;
+  height: 185px;
+}
+.category1 {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding:10px;
+  color: white;
+  font-size: 1.2em;
+  height: 400px;
+}
+
+.category span {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  padding: 5px 5px;
+  line-height: 2rem;
+  border-radius: 5px;
+  color: aliceblue;
+}
+.category1 span {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  padding: 5px 5px;
+  line-height: 2rem;
+  border-radius: 5px;
+  color: aliceblue;
+}
+.hoverBgTransition {
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  transition: background-color 2s ease;
+}
+
+.hoverBgTransition::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #171a26;
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 2s ease;
+}
+
+.hoverBgTransition:hover::before {
+  transform: translateX(0);
+}
+
+@media screen and (max-width: 760px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+  }
+  .sidebar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+}

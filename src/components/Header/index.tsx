@@ -1,0 +1,144 @@
+import {
+  IoShareSocial,
+} from "react-icons/io5";
+import { FaBars } from "react-icons/fa";
+import styles from "./index.module.css";
+import useWindowResize from "../../hooks/useWindowResize";
+import { useEffect, useState } from "react";
+import MobileSidebar from "../MobileSidebar";
+import { useLocation, useNavigate } from "react-router-dom";
+import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
+import { resetToken } from "../../redux/reducer/authReducer";
+import { resetUser } from "../../redux/reducer/userReducer";
+import { notifySuccess } from "../../toast";
+
+const Header = () => {
+  const width = useWindowResize().width;
+  const isMobile = width < 768;
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const location = useLocation();
+  const isHomePage: boolean = location.pathname === "/";
+
+  const [isBarClicked, setIsBarClicked] = useState(false);
+  const [bgColor, setBgColor] = useState("bg-[#003366] bg-opacity-50");
+
+  const navigateToLoginPage = () => {
+    navigate("/login");
+  };
+
+  const navigateToHomePage = () => {
+    navigate("/");
+  };
+
+  const handleLogout = () => {
+    dispatch(resetToken());
+    dispatch(resetUser());
+    navigate("/login");
+    notifySuccess("Logged out successfully");
+  };
+
+  const user = useAppSelector((state: RootState) => state.user.user);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight) {
+        setBgColor("bg-[#161E2F]");
+      } else {
+        setBgColor("bg-[#161E2F] bg-opacity-50");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <>
+      {!isMobile && (
+        <header
+          className={`${styles.header} ${
+            isHomePage ? "fixed" : "sticky"
+          } h-[100px] ${bgColor} border-b-2 border-white`}
+        >
+          <div className={styles.container}>
+            <p onClick={navigateToHomePage} className={styles.logo}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className={styles.logo}
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+              <span className={styles.logoText}>MyDreamFy</span>
+            </p>
+            <div className={styles.actions}>
+              {/*<div className={styles.referFriend}>*/}
+              {/*  <IoShareSocial className={styles.referFriendIcon} />*/}
+              {/*  <span className={styles.referFriendText}>Refer a friend</span>*/}
+              {/*</div>*/}
+              {!user && (
+                <div
+                  onClick={navigateToLoginPage}
+                  className={styles.referFriend}
+                >
+                  <span className={styles.loginBtn}>Login</span>
+                </div>
+              )}
+              {user && (
+                <div onClick={handleLogout} className={styles.referFriend}>
+                  <span className={styles.loginBtn}>Logout</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </header>
+      )}
+      {isMobile && (
+        <header className={`${styles.header} h-[100px] ${bgColor}`}>
+          <div className={styles.container}>
+            <p onClick={navigateToHomePage} className={styles.logo}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className={styles.logo}
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+              <span className={styles.logoText}>MyDreamFy</span>
+            </p>
+
+            <div
+              onClick={() => setIsBarClicked(!isBarClicked)}
+              className="p-2 border border-white rounded-md text-white text-xl"
+            >
+              <FaBars />
+            </div>
+          </div>
+        </header>
+      )}
+      {isBarClicked && (
+        <MobileSidebar
+          isBarClicked={isBarClicked}
+          setIsBarClicked={setIsBarClicked}
+        />
+      )}
+    </>
+  );
+};
+
+export default Header;

@@ -1,0 +1,4 @@
+.card {
+  /* background: linear-gradient(135deg, #3C4C54, #40424B, #333744, #64375A); */
+  background: linear-gradient(135deg, #3E393E 0%, #3F3A3E 25%, #323441 50%, #3C4A54 75%, #42565D 100%);
+}
