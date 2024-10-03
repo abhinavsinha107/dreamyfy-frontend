@@ -133,6 +133,18 @@ const SideBar = () => {
           </ListItemIcon>
           <ListItemText primary="Profile" />
         </ListItemButton>
+          <ListItemButton component={Link} to="/Admin/chat">
+          <ListItemIcon>
+            <AccountCircleOutlinedIcon
+              color={
+                location.pathname.startsWith("/Admin/chat")
+                  ? "primary"
+                  : "inherit"
+              }
+            />
+          </ListItemIcon>
+          <ListItemText primary="Chat" />
+        </ListItemButton>
         <ListItemButton
           onClick={() => {
             notifySuccess("Logged out successfully");

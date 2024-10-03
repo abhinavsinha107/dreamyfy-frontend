@@ -22,6 +22,7 @@ import AddClass from "./classRelated/AddClass";
 import ShowClasses from "./classRelated/ShowClasses";
 import TeacherClassDetails from "../teacher/TeacherCourseDetails";
 import AccountMenu from "../../components/AccountMenu";
+import AdminChat from "./AdminChat.tsx";
 
 const AdminDashboard = () => {
   const [open, setOpen] = useState(false);
@@ -81,6 +82,7 @@ const AdminDashboard = () => {
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/Admin/dashboard" element={<AdminHomePage />} />
             <Route path="/Admin/profile" element={<AdminProfile />} />
+            <Route path="/Admin/chat" element={<AdminChat />} />
 
             {/* Subject */}
             <Route path="/Admin/subjects" element={<ShowSubjects />} />

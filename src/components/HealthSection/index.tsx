@@ -6,10 +6,18 @@ import Mental2 from "../../assets/Images/mental2.jpg";
 import Mental3 from "../../assets/Images/mental3.jpg";
 import Mental4 from "../../assets/Images/mental4.jpg";
 import Mental5 from "../../assets/Images/mental5.jpg";
+import {useNavigate} from "react-router-dom";
 
 const HealthSection = () => {
+  const navigate = useNavigate();
   const width = useWindowResize().width;
   const isMobile = width < 768;
+ const handleBookSession = () =>{
+     navigate("/book-a-session");
+ }
+ const handleChatWithUs = () =>{
+     navigate("/chat-with-us");
+ }
 
   return (
     <div className={styles.container}>
@@ -20,17 +28,21 @@ const HealthSection = () => {
           towards well-being
         </p>
         <p
-          className={`rounded-full bg-white text-[#003366] p-3 text-lg flex items-center justify-around mt-6 ${styles.hoverBgTransition}`}
+            className={`rounded-full bg-white text-[#003366] p-3 text-lg flex items-center justify-around mt-6 ${styles.hoverBgTransition}`}
+            style={{cursor: 'pointer'}}
+            onClick={handleBookSession}
         >
           <span>Book a session</span>
+          <FaArrowRightLong className="text-xl"/>
+        </p>
+        <p
+          className={`rounded-full bg-white text-[#003366] p-3 text-lg flex items-center justify-around mt-6 ${styles.hoverBgTransition}`}
+          style={{cursor: 'pointer'}}
+          onClick={handleChatWithUs}
+        >
+          <span>Chat with Us</span>
           <FaArrowRightLong className="text-xl" />
         </p>
-        {/*<p*/}
-        {/*  className={`rounded-full bg-white text-[#003366] p-3 text-lg flex items-center justify-around mt-6 ${styles.hoverBgTransition}`}*/}
-        {/*>*/}
-        {/*  <span>Chat with Us</span>*/}
-        {/*  <FaArrowRightLong className="text-xl" />*/}
-        {/*</p>*/}
         {/*<p*/}
         {/*  className={`rounded-full bg-white text-[#003366] p-3 text-lg flex items-center justify-around mt-6 ${styles.hoverBgTransition}`}*/}
         {/*>*/}
