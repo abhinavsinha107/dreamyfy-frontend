@@ -23,6 +23,7 @@ import ShowClasses from "./classRelated/ShowClasses";
 import TeacherClassDetails from "../teacher/TeacherCourseDetails";
 import AccountMenu from "../../components/AccountMenu";
 import AdminChat from "./AdminChat.tsx";
+import LogoUpload from "./logoUpload.tsx";
 
 const AdminDashboard = () => {
   const [open, setOpen] = useState(false);
@@ -95,6 +96,7 @@ const AdminDashboard = () => {
             <Route path="/Admin/addclass" element={<AddClass />} />
             <Route path="/Admin/classes" element={<ShowClasses />} />
             <Route path="/Admin/courses" element={<TeacherClassDetails />} />
+            <Route path="/Admin/logo-update" element={<LogoUpload />} />
 
             {/* Student */}
             {/* <Route path="/Admin/addstudents" element={<AddStudent situation="Student" />} />

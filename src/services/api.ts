@@ -166,6 +166,18 @@ export const api = createApi({
         body
       }),
     }),
+    fetchCurrentLogo: builder.query<string, void>({
+      query: () => '/logo',
+    }),
+    
+    // Upload a new logo
+    uploadLogo: builder.mutation<any, FormData>({
+      query: (formData) => ({
+        url: '/logo/upload',
+        method: 'POST',
+        body: formData,
+      }),
+    }),
   }),
 });
 
@@ -188,5 +200,7 @@ export const {
   useStripeCheckoutMutation,
   useCreateConnectedAccountMutation,
   useGetTutorsDetailsQuery,
-  useGetSubjectCoursesQuery
+  useGetSubjectCoursesQuery,
+  useUploadLogoMutation,
+  useFetchCurrentLogoQuery,
 } = api;
