@@ -58,6 +58,15 @@ export const api = createApi({
       }),
       providesTags: ["Subject"],
     }),
+    
+    getSubjectCourses: builder.query<any, void>({
+      query: (body) => ({
+        url: `filter/courses`,
+        method: "POST",
+        body
+      }),
+      providesTags: ["Course"],
+    }),
     getAllCourses: builder.query<GetAllCoursesResponse, void>({
       query: () => ({
         url: `courses`,
@@ -150,7 +159,7 @@ export const api = createApi({
         body
       }),
     }),
-    createConnectedAccount: builder.mutation<any, StripeRequest>({
+    createConnectedAccount: builder.mutation<any, any>({
       query: (body) => ({
         url: `payments/onBoard`,
         method: "POST",
@@ -178,5 +187,6 @@ export const {
   useRegisterTecherMutation,
   useStripeCheckoutMutation,
   useCreateConnectedAccountMutation,
-  useGetTutorsDetailsQuery
+  useGetTutorsDetailsQuery,
+  useGetSubjectCoursesQuery
 } = api;

@@ -53,22 +53,23 @@ export const tutors = [
 
 interface TutorCardProps {
   subject: string;
-  count: number;
-  icon: React.ReactNode;
+  id: string
+    // count: number;
+    // icon: React.ReactNode;
 }
 
-const TutorCard: React.FC<TutorCardProps> = ({ subject}) => {
+const TutorCard: React.FC<TutorCardProps> = ({ subject, id}) => {
   const navigate = useNavigate(); // Hook for navigation
 
-  const handleCardClick = () => {
-    navigate(`/subject/${subject.replace(/\s+/g, '-').toLowerCase()}`);
+  const handleCardClick = (sub_name,id) => {
+    navigate(`/subject/${sub_name}/${id}`);
   };
 
   return (
       <div
           className="flex bg-white items-center p-4 m-1 border rounded-lg duration-900 transform hover:-translate-y-2 cursor-pointer"
           style={{ backgroundColor: "rgb(255 255 255)" }} // Inline style for background color
-          onClick={handleCardClick} // Click handler to navigate to new page
+          onClick={() =>handleCardClick(subject,id)} // Click handler to navigate to new page
       >
         {/*<div className="w-10 h-12 mr-4 flex items-center justify-center">*/}
         {/*  {icon}*/}
@@ -96,6 +97,7 @@ const TutorsGrid: React.FC = () => {
             <TutorCard
                 key={index}
                 subject={subject.name}
+                id = {subject._id}
                 // count={tutor.count}
                 // icon={tutor.icon}
             />

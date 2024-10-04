@@ -11,6 +11,8 @@ import { RootState } from "./redux/store";
 import BecomeATutor from "./pages/BecomeATutor";
 import TutorsCourses from "./components/TutorsGrid/TutorsCourses.tsx";
 import JoinUsForm from "./components/JoinUs/JoinUsForm.tsx";
+import BookingForm from "./components/HealthSection/BookingForm.tsx";
+import AdminChat from "./components/HealthSection/AdminChat.tsx";
 
 const App = () => {
   const role = useSelector((state: RootState) => state.user.user?.role);
@@ -25,7 +27,9 @@ const App = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/become-a-tutor" element={<BecomeATutor />} />
           <Route path="/join-us-form" element={<JoinUsForm/>} />
-          <Route path="/subject/:subject" element={<TutorsCourses />} />
+          <Route path="/book-a-session" element={<BookingForm/>} />
+          <Route path="/chat-with-us" element={<AdminChat/>} />
+          <Route path="/subject/:subject/:id" element={<TutorsCourses />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       )}

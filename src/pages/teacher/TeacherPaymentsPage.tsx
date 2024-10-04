@@ -15,7 +15,9 @@ const TeacherPaymentsPage = () => {
     const handleCreateAccountClick = async () => {
         setIsLoading(true); // Show loader
         try {
-            const result = await createConnectedAccount().unwrap();
+            const result = await createConnectedAccount(
+                {}
+            ).unwrap();
             window.location.href = result.data.url;
         } catch (error) {
             console.error("Error creating account:", error);

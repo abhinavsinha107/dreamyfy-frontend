@@ -142,7 +142,7 @@ const AdminChat: React.FC = () => {
                 isOpen={isModalOpen}
                 onRequestClose={() => {
                     // Only close modal if session is valid
-                    if (isValid) {
+                    if (isSessionValid) {
                         setIsModalOpen(false);
                     }
                 }}

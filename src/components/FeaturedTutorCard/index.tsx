@@ -3,7 +3,7 @@
   import ManTutor1 from "../../assets/Images/ManTutor1.jpg"
 
   interface Props {
-    src: string;
+    src: any;
   }
 
   const FeaturedTutorCard = ({ src }: Props) => {

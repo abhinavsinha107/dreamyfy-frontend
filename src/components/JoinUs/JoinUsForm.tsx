@@ -25,19 +25,19 @@ const JoinUsForm: React.FC = () => {
     const [registerUser] = useRegisterTecherMutation();
 
     const onSubmit = async (data: InvesterFormdata) => {
-        data = { ...data, role: "TEACHER" };
-        try {
-            const res = await registerUser(data).unwrap();
-            notifySuccess(res?.message);
-            navigate("/login");
-        } catch (err) {
-            const error = err as ErrorResponse;
-            const message =
-                error?.message === "Validation error!"
-                    ? error.data?.errors[0].msg ?? "Something went wrong"
-                    : error?.message ?? "Something went wrong";
-            notifyError(message);
-        }
+        // data = { ...data, role: "TEACHER" };
+        // try {
+        //     const res = await registerUser(data).unwrap();
+        //     notifySuccess(res?.message);
+        //     navigate("/login");
+        // } catch (err) {
+        //     const error = err as ErrorResponse;
+        //     const message =
+        //         error?.message === "Validation error!"
+        //             ? error.data?.errors[0].msg ?? "Something went wrong"
+        //             : error?.message ?? "Something went wrong";
+        //     notifyError(message);
+        // }
     };
 
     return (

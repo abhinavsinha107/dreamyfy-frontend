@@ -15,7 +15,7 @@ const TutorCarousel = () => {
   const isMobile = width < 600;
   const isTab = width < 769 && width >= 600;
   const isLaptop = width < 1200 && width >= 769;
-    const { data: tutorsResponse} = useGetTutorsDetailsQuery();
+    const { data: tutorsResponse} = useGetTutorsDetailsQuery("");
 
 
     const tutors = [
@@ -52,7 +52,7 @@ const TutorCarousel = () => {
       {tutorsResponse && tutorsResponse.data.map((tutor, index) => (
           <div>
         <SwiperSlide key={index} className="flex justify-center items-center">
-            <FeaturedTutorCard src={tutor} />
+            <FeaturedTutorCard src={tutor.data} />
         </SwiperSlide>
           </div>
       ))}
