@@ -24,6 +24,8 @@ import TeacherAddCourse from "./TeacherAddCourse";
 import TeacherCourseDetails from "./TeacherCourseDetails";
 import TeacherClassDetails from "./TeacherClassDetails";
 import TeacherPaymentsPage from "./TeacherPaymentsPage";
+import Chat from "../StudentTeacherChat";
+import StudentTeacherChat from "../StudentTeacherChat";
 // import TeacherViewStudent from "./TeacherViewStudent";
 // import StudentExamMarks from "../admin/studentRelated/StudentExamMarks";
 
@@ -109,6 +111,7 @@ const TeacherDashboard = () => {
             <Route path="/logout" element={<Logout />} /> */}
 
             <Route path="/Teacher/payments" element={<TeacherPaymentsPage />} />
+            <Route path="/Teacher/chat" element={<StudentTeacherChat />} />
           </Routes>
         </Box>
       </Box>

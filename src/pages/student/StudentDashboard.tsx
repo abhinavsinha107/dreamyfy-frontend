@@ -19,6 +19,7 @@ import Logout from "../Logout";
 import AccountMenu from "../../components/AccountMenu";
 import { AppBar, Drawer } from "../../components/styles";
 import StudentCourseDetails from "./StudentCourseDetails";
+import StudentTeacherChat from "../StudentTeacherChat";
 
 const StudentDashboard = () => {
   const [open, setOpen] = useState(true);
@@ -81,6 +82,8 @@ const StudentDashboard = () => {
 
             <Route path="/Student/subjects" element={<StudentSubjects />} />
             <Route path="/Student/subjects/:id" element={<StudentCourseDetails />} />
+            <Route path="/Student/chat" element={<StudentTeacherChat />} />
+
             
 
             <Route path="/logout" element={<Logout />} />

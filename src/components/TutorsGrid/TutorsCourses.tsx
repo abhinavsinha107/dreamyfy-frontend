@@ -20,8 +20,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ title, duration, level }) => {
 
 const TutorsCourses: React.FC = () => {
     const { subject, id } = useParams<{ subject: string, id: string }>(); // Extract both subject and id from the URL
-        const subjectKey = id.replace(/-/g, ' '); // Assuming you just need to clean up the subject
-    const { data: subjectCourses } = useGetSubjectCoursesQuery({'id':subjectKey});
+        const subjectKey = {'id':id.replace(/-/g, ' ')} // Assuming you just need to clean up the subject
+    const { data: subjectCourses } = useGetSubjectCoursesQuery(subjectKey);
 
     return (
         <div className="py-10 px-6 bg-gray-100">

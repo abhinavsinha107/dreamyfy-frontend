@@ -22,7 +22,7 @@ import AddClass from "./classRelated/AddClass";
 import ShowClasses from "./classRelated/ShowClasses";
 import TeacherClassDetails from "../teacher/TeacherCourseDetails";
 import AccountMenu from "../../components/AccountMenu";
-import AdminChat from "./AdminChat.tsx";
+import AdminChat from "../StudentTeacherChat.tsx";
 import LogoUpload from "./logoUpload.tsx";
 
 const AdminDashboard = () => {

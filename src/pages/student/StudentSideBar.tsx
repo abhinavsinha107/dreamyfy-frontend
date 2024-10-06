@@ -52,6 +52,18 @@ const StudentSideBar = () => {
           </ListItemIcon>
           <ListItemText primary="Courses" />
         </ListItemButton>
+        <ListItemButton component={Link} to="/Student/chat">
+          <ListItemIcon>
+            <AssignmentIcon
+              color={
+                location.pathname.startsWith("/Student/chat")
+                  ? "primary"
+                  : "inherit"
+              }
+            />
+          </ListItemIcon>
+          <ListItemText primary="Chat" />
+        </ListItemButton>
         {/* <ListItemButton component={Link} to="/Student/attendance">
           <ListItemIcon>
             <ClassOutlinedIcon
