@@ -85,13 +85,13 @@ const TeacherProfile = () => {
   useEffect(() => {
     if (teacherData?.data && Object.keys(teacherData.data).length > 0) {
       reset({
-        email: teacherData?.data?.user.email ?? "",
-        name: teacherData?.data?.user.name ?? "",
-        bio: teacherData?.data?.user.bio ?? "",
-        phoneNumber: teacherData?.data?.user.phoneNumber ?? "",
-        dateOfBirth: teacherData?.data?.user.dateOfBirth,
+        email: teacherData?.data?.user?.email ?? "",
+        name: teacherData?.data?.user?.name ?? "",
+        bio: teacherData?.data?.user?.bio ?? "",
+        phoneNumber: teacherData?.data?.user?.phoneNumber ?? "",
+        dateOfBirth: teacherData?.data?.user?.dateOfBirth,
       });
-      setAvatarSrc(teacherData?.data?.user.profilePicture)
+      setAvatarSrc(teacherData?.data?.user?.profilePicture)
     }
   }, [teacherData?.data]);
 

@@ -11,6 +11,7 @@ import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 import { resetToken } from "../../redux/reducer/authReducer";
 import { resetUser } from "../../redux/reducer/userReducer";
 import { notifySuccess } from "../../toast";
+import { useFetchMainLogoQuery } from "../../services/api";
 
 const Header = () => {
   const width = useWindowResize().width;
@@ -23,6 +24,7 @@ const Header = () => {
 
   const [isBarClicked, setIsBarClicked] = useState(false);
   const [bgColor, setBgColor] = useState("bg-[#003366] bg-opacity-50");
+  const { data: currentMainLogo } = useFetchMainLogoQuery();
 
   const navigateToLoginPage = () => {
     navigate("/login");
@@ -67,18 +69,7 @@ const Header = () => {
         >
           <div className={styles.container}>
             <p onClick={navigateToHomePage} className={styles.logo}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className={styles.logo}
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
+              <img src={currentMainLogo?.data?.logo} style={{width: '100px'}}></img>
               <span className={styles.logoText}>MyDreamFy</span>
             </p>
             <div className={styles.actions}>

@@ -166,13 +166,24 @@ export const api = createApi({
         body
       }),
     }),
-    fetchCurrentLogo: builder.query<string, void>({
-      query: () => '/logo',
+    fetchMainLogo: builder.query<string, void>({
+      query: () => '/upload/app-logo',
     }),
-    
-    uploadLogo: builder.mutation<any, FormData>({
+    uploadMainLogo: builder.mutation<any, FormData>({
       query: (formData) => ({
-        url: '/logo/upload',
+        url: '/upload/app-logo',
+        method: 'POST',
+        body: formData,
+      }),
+    }),
+
+    fetchBrandLogos: builder.query<string[], void>({
+      query: () => '/upload/brand-logos',
+    }),
+
+    uploadBrandLogo: builder.mutation<any, FormData>({
+      query: (formData) => ({
+        url: '/upload/brand-logo',
         method: 'POST',
         body: formData,
       }),
@@ -213,8 +224,10 @@ export const {
   useCreateConnectedAccountMutation,
   useGetTutorsDetailsQuery,
   useGetSubjectCoursesQuery,
-  useUploadLogoMutation,
-  useFetchCurrentLogoQuery,
+  useUploadBrandLogoMutation,
+  useFetchBrandLogosQuery,
+  useFetchMainLogoQuery,
+  useUploadMainLogoMutation,
   useCreateInvesterMutation,
   useGetInvestmentRequestsQuery
 } = api;

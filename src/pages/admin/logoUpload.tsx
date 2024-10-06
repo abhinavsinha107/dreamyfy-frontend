@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useUploadLogoMutation, useFetchCurrentLogoQuery } from '../../services/api'; // Adjust the import path as needed
+import { useUploadMainLogoMutation, useFetchMainLogoQuery, useUploadBrandLogoMutation, useFetchBrandLogosQuery } from '../../services/api'; // Adjust the import path as needed
 import { Box, Button, CircularProgress, Stack, TextField, Typography } from '@mui/material';
 import { notifyError, notifySuccess } from '../../toast'; // Assuming these are your notification functions
 import styled from 'styled-components';
@@ -9,8 +9,17 @@ const LogoUpload: React.FC = () => {
   const [brandFiles, setBrandFiles] = useState<File[]>([]);
   const [mainPreviewUrl, setMainPreviewUrl] = useState<string | null>(null);
   const [brandPreviewUrls, setBrandPreviewUrls] = useState<string[]>([]);
-  const [uploadLogo, { isLoading }] = useUploadLogoMutation();
-  const { data: currentLogo } = useFetchCurrentLogoQuery();
+  const [uploadMainLogo, { isLoading: isMainLoading }] = useUploadMainLogoMutation();
+  const [uploadBrandLogo, { isLoading: isBrandLoading }] = useUploadBrandLogoMutation();
+  const { data: currentMainLogo } = useFetchMainLogoQuery();
+  const { data: brandLogos } = useFetchBrandLogosQuery();
+
+  useEffect(() => {
+    // Set the initial preview URL for the main logo if it exists
+    if (currentMainLogo) {
+      setMainPreviewUrl(currentMainLogo.data.logo);
+    }
+  }, [currentMainLogo]);
 
   const handleMainFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0] || null;
@@ -36,18 +45,10 @@ const LogoUpload: React.FC = () => {
       const formData = new FormData();
       formData.append('logo', mainFile);
 
-      const response = await uploadLogo(formData).unwrap();
+      const response = await uploadMainLogo(formData).unwrap();
       notifySuccess(response.message || 'Main logo uploaded successfully!');
-
-      // Update the preview URL
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setMainPreviewUrl(reader.result as string);
-      };
-      reader.readAsDataURL(mainFile);
-
-      // Clear the file input after successful upload
       setMainFile(null);
+      setMainPreviewUrl(response.data.imageUrl)
     } catch (err) {
       handleUploadError(err);
     }
@@ -65,7 +66,7 @@ const LogoUpload: React.FC = () => {
         formData.append('logos', file);
       });
 
-      const response = await uploadLogo(formData).unwrap(); // Ensure this handles multiple files correctly
+      const response = await uploadBrandLogo(formData).unwrap(); // Ensure this handles multiple files correctly
       notifySuccess(response.message || 'Brand logos uploaded successfully!');
 
       // Clear the file input after successful upload
@@ -94,41 +95,21 @@ const LogoUpload: React.FC = () => {
     setBrandPreviewUrls(newUrls);
   };
 
-  useEffect(() => {
-    if (mainFile) {
-      const objectUrl = URL.createObjectURL(mainFile);
-      setMainPreviewUrl(objectUrl);
-
-      return () => {
-        URL.revokeObjectURL(objectUrl);
-      };
-    } else {
-      setMainPreviewUrl(null);
-    }
-  }, [mainFile]);
-
   return (
-    <StyledContainer style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'3rem'}}>
+    <StyledContainer>
       <StyledBox>
         <Typography variant="h5" gutterBottom>
           Upload Main Logo
         </Typography>
 
-        {currentLogo ? (
+        {mainPreviewUrl ? (
           <Box sx={{ mb: 2 }}>
-            <img src={currentLogo} alt="Current Logo" style={{ width: '150px', height: 'auto', marginBottom: '16px' }} />
+            <img src={mainPreviewUrl} alt="Current Logo" style={{ width: '150px', height: 'auto', marginBottom: '16px' }} />
           </Box>
         ) : (
           <Typography variant="body1" color="textSecondary" sx={{ mb: 2 }}>
-            No logo uploaded yet.
+            No main logo uploaded yet.
           </Typography>
-        )}
-
-        {mainPreviewUrl && (
-          <Box sx={{ mb: 2 }}>
-            <Typography variant="body1">Preview:</Typography>
-            <img src={mainPreviewUrl} alt="Logo Preview" style={{ width: '150px', height: 'auto', marginBottom: '16px' }} />
-          </Box>
         )}
 
         <Stack spacing={2}>
@@ -142,15 +123,15 @@ const LogoUpload: React.FC = () => {
           <Button
             variant="contained"
             onClick={handleMainUpload}
-            disabled={isLoading || !mainFile}
+            disabled={isMainLoading || !mainFile}
             sx={{
-              backgroundColor: isLoading ? 'grey' : '#3f51b5',
+              backgroundColor: isMainLoading ? 'grey' : '#3f51b5',
               '&:hover': {
-                backgroundColor: isLoading ? 'grey' : '#303f9f',
+                backgroundColor: isMainLoading ? 'grey' : '#303f9f',
               },
             }}
           >
-            {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Upload Main Logo'}
+            {isMainLoading ? <CircularProgress size={24} color="inherit" /> : 'Upload Main Logo'}
           </Button>
         </Stack>
       </StyledBox>
@@ -159,6 +140,19 @@ const LogoUpload: React.FC = () => {
         <Typography variant="h5" gutterBottom>
           Upload Brands Logos
         </Typography>
+
+        {brandLogos?.length > 0 && (
+          <Box sx={{ mb: 2 }}>
+            <Typography variant="body1">Existing Brand Logos:</Typography>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+              {brandLogos.map((url, index) => (
+                <Box key={index} sx={{ position: 'relative', marginRight: '10px', marginBottom: '10px' }}>
+                  <img src={url} alt={`Brand Logo ${index + 1}`} style={{ width: '150px', height: 'auto' }} />
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        )}
 
         {brandPreviewUrls.length > 0 && (
           <Box sx={{ mb: 2 }}>
@@ -201,15 +195,15 @@ const LogoUpload: React.FC = () => {
           <Button
             variant="contained"
             onClick={handleBrandUpload}
-            disabled={isLoading || brandFiles.length === 0}
+            disabled={isBrandLoading || brandFiles.length === 0}
             sx={{
-              backgroundColor: isLoading ? 'grey' : '#3f51b5',
+              backgroundColor: isBrandLoading ? 'grey' : '#3f51b5',
               '&:hover': {
-                backgroundColor: isLoading ? 'grey' : '#303f9f',
+                backgroundColor: isBrandLoading ? 'grey' : '#303f9f',
               },
             }}
           >
-            {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Upload Brand Logos'}
+            {isBrandLoading ? <CircularProgress size={24} color="inherit" /> : 'Upload Brand Logos'}
           </Button>
         </Stack>
       </StyledBox>
