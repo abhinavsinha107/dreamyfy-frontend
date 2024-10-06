@@ -52,7 +52,7 @@ const TutorCarousel = () => {
       {tutorsResponse && tutorsResponse.data.map((tutor, index) => (
           <div>
         <SwiperSlide key={index} className="flex justify-center items-center">
-            <FeaturedTutorCard src={tutor.data} />
+            <FeaturedTutorCard src={tutor} />
         </SwiperSlide>
           </div>
       ))}

@@ -17,9 +17,9 @@
               alt="blog"
             />
             <div className="p-3 bg-white">
-              <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              {/* <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                 Java
-              </h2>
+              </h2> */}
               <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                 {src.name}
               </h1>

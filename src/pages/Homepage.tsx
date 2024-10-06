@@ -30,7 +30,7 @@ const Homepage = () => {
       <JoinUs />
       <BrandLogo />
       <DreamPass />
-      <TestimonialCarousel />
+      {/* <TestimonialCarousel /> */}
       <BackgroundLogo />
       <Footer />
     </>
