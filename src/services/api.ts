@@ -170,12 +170,24 @@ export const api = createApi({
       query: () => '/logo',
     }),
     
-    // Upload a new logo
     uploadLogo: builder.mutation<any, FormData>({
       query: (formData) => ({
         url: '/logo/upload',
         method: 'POST',
         body: formData,
+      }),
+    }),
+    createInvester: builder.mutation<any, any>({
+      query: (body) => ({
+        url: `/investers`,
+        method: "POST",
+        body
+      }),
+    }),
+    getInvestmentRequests: builder.query<InvestmentRequest[], string>({
+      query: () => ({
+        url: `/investers`,
+        method: "GET",
       }),
     }),
   }),
@@ -203,4 +215,6 @@ export const {
   useGetSubjectCoursesQuery,
   useUploadLogoMutation,
   useFetchCurrentLogoQuery,
+  useCreateInvesterMutation,
+  useGetInvestmentRequestsQuery
 } = api;

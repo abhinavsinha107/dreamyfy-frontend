@@ -96,13 +96,13 @@ const AdminProfile = () => {
   useEffect(() => {
     if (adminData?.data && Object.keys(adminData.data).length > 0) {
       reset({
-        email: adminData?.data?.email ?? "",
-        name: adminData?.data?.name ?? "",
-        bio: adminData?.data?.bio ?? "",
-        phoneNumber: adminData?.data?.phoneNumber ?? "",
-        dateOfBirth: adminData?.data?.dateOfBirth,
+        email: adminData?.data?.user.email ?? "",
+        name: adminData?.data?.user.name ?? "",
+        bio: adminData?.data?.user.bio ?? "",
+        phoneNumber: adminData?.data?.user.phoneNumber ?? "",
+        dateOfBirth: adminData?.data?.user.dateOfBirth,
       });
-      setAvatarSrc(adminData?.data?.profilePicture)
+      setAvatarSrc(adminData?.data?.user.profilePicture)
     }
   }, [adminData?.data]);
 

@@ -22,8 +22,10 @@ import AddClass from "./classRelated/AddClass";
 import ShowClasses from "./classRelated/ShowClasses";
 import TeacherClassDetails from "../teacher/TeacherCourseDetails";
 import AccountMenu from "../../components/AccountMenu";
-import AdminChat from "../StudentTeacherChat.tsx";
+
 import LogoUpload from "./logoUpload.tsx";
+import AdminChat from "./AdminChat.tsx";
+import InvestmentRequests from "./InvestingRequests.tsx";
 
 const AdminDashboard = () => {
   const [open, setOpen] = useState(false);
@@ -84,6 +86,8 @@ const AdminDashboard = () => {
             <Route path="/Admin/dashboard" element={<AdminHomePage />} />
             <Route path="/Admin/profile" element={<AdminProfile />} />
             <Route path="/Admin/chat" element={<AdminChat />} />
+            <Route path="/Admin/investing_requests" element={<InvestmentRequests/>} />
+
 
             {/* Subject */}
             <Route path="/Admin/subjects" element={<ShowSubjects />} />

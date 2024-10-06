@@ -21,7 +21,9 @@ import { useAppDispatch } from "../../redux/store";
 import { resetToken } from "../../redux/reducer/authReducer";
 import { resetUser } from "../../redux/reducer/userReducer";
 import { notifySuccess } from "../../toast";
-
+import UploadIcon from '@mui/icons-material/Upload';
+import ChatIcon from '@mui/icons-material/Chat';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 const SideBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -69,7 +71,7 @@ const SideBar = () => {
         </ListItemButton>
         <ListItemButton component={Link} to="/Admin/logo-update">
           <ListItemIcon>
-            <AssignmentIcon
+            <UploadIcon
               color={
                 location.pathname.startsWith("/Admin/logo-update")
                   ? "primary"
@@ -147,7 +149,7 @@ const SideBar = () => {
         </ListItemButton>
           <ListItemButton component={Link} to="/Admin/chat">
           <ListItemIcon>
-            <AccountCircleOutlinedIcon
+            <ChatIcon
               color={
                 location.pathname.startsWith("/Admin/chat")
                   ? "primary"
@@ -156,6 +158,18 @@ const SideBar = () => {
             />
           </ListItemIcon>
           <ListItemText primary="Chat" />
+        </ListItemButton>
+        <ListItemButton component={Link} to="/Admin/investing_requests">
+          <ListItemIcon>
+            <AttachMoneyIcon
+              color={
+                location.pathname.startsWith("/Admin/investing_requests")
+                  ? "primary"
+                  : "inherit"
+              }
+            />
+          </ListItemIcon>
+          <ListItemText primary="Investing Requests" />
         </ListItemButton>
         <ListItemButton
           onClick={() => {

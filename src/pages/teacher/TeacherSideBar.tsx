@@ -16,6 +16,8 @@ import { useAppDispatch } from "../../redux/store";
 import { notifySuccess } from "../../toast";
 import { resetToken } from "../../redux/reducer/authReducer";
 import { resetUser } from "../../redux/reducer/userReducer";
+import ChatIcon from '@mui/icons-material/Chat';
+import PaymentIcon from '@mui/icons-material/Payment';
 
 const TeacherSideBar = () => {
   const navigate = useNavigate();
@@ -64,7 +66,7 @@ const TeacherSideBar = () => {
         </ListItemButton>
         <ListItemButton component={Link} to="/Teacher/payments">
           <ListItemIcon>
-            <ClassOutlinedIcon
+            <PaymentIcon
               color={
                 location.pathname.startsWith("/Teacher/payments")
                   ? "primary"
@@ -76,7 +78,7 @@ const TeacherSideBar = () => {
         </ListItemButton>
         <ListItemButton component={Link} to="/Teacher/chat">
           <ListItemIcon>
-            <ClassOutlinedIcon
+            <ChatIcon
               color={
                 location.pathname.startsWith("/Teacher/chat")
                   ? "primary"

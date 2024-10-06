@@ -108,7 +108,7 @@ const LogoUpload: React.FC = () => {
   }, [mainFile]);
 
   return (
-    <StyledContainer style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'3 rem'}}>
+    <StyledContainer style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'3rem'}}>
       <StyledBox>
         <Typography variant="h5" gutterBottom>
           Upload Main Logo

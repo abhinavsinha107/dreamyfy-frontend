@@ -13,6 +13,7 @@ import TutorsCourses from "./components/TutorsGrid/TutorsCourses.tsx";
 import JoinUsForm from "./components/JoinUs/JoinUsForm.tsx";
 import BookingForm from "./components/HealthSection/BookingForm.tsx";
 import AdminChat from "./components/HealthSection/AdminChat.tsx";
+import VisitProfile from "./components/FeaturedTutorCard/VisitProfile.tsx";
 
 const App = () => {
   const role = useSelector((state: RootState) => state.user.user?.role);
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/book-a-session" element={<BookingForm/>} />
           <Route path="/chat-with-us" element={<AdminChat/>} />
           <Route path="/subject/:subject/:id" element={<TutorsCourses />} />
+          <Route path="/tutor/:id" element={<VisitProfile />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       )}

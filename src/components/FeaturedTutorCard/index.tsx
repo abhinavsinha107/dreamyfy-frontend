@@ -1,12 +1,14 @@
   import { FaStar } from "react-icons/fa";
   import RoundButton from "../Button";
   import ManTutor1 from "../../assets/Images/ManTutor1.jpg"
+import { useNavigate } from "react-router-dom";
 
   interface Props {
     src: any;
   }
 
   const FeaturedTutorCard = ({ src }: Props) => {
+    const navigate = useNavigate()
     return (
       <div className=" px-2 py-6 flex ">
         <div className="p-4 max-w-[350px]">
@@ -32,7 +34,7 @@
                   {src.email}
                 </span>
               </div>
-              <RoundButton title="Visit Profile" style={{ marginTop: "20px" }} />
+              <RoundButton onClick={() => navigate(`/tutor/${src._id}`)} title="Visit Profile" style={{ marginTop: "20px" }} />
             </div>
           </div>
         </div>
