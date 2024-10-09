@@ -34,9 +34,7 @@ const StudentCourseDetails: React.FC = () => {
   const handleStripePayment = async () => {
     try {
       const res = await checkout({
-        name: course?.data?.name,
-        price: course?.data?.price,
-        description: course?.data?.description,
+        'courseId':course?.data._id.toString()
       });
       window.location.href = res.data.data.url
     } catch (err) {

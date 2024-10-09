@@ -72,8 +72,8 @@ const VisitProfile: React.FC = () => {
               Courses by {teacher.data.user.name}
             </h2>
             <div style={styles.coursesGrid}>
-              {teacher.data.courses && teacher.data.courses.length > 0 ? (
-                teacher.data.courses.map((course) => (
+              {teacher.data.user.courses && teacher.data.user.courses.length > 0 ? (
+                teacher.data.user.courses.map((course) => (
                   <CourseCard key={course._id} course={course} />
                 ))
               ) : (
