@@ -195,7 +195,7 @@ export const api = createApi({
         body
       }),
     }),
-    getInvestmentRequests: builder.query<InvestmentRequest[], string>({
+    getInvestmentRequests: builder.query<[], string>({
       query: () => ({
         url: `/investers`,
         method: "GET",
