@@ -96,7 +96,7 @@ const LogoUpload: React.FC = () => {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'3rem'}}>
       <StyledBox>
         <Typography variant="h5" gutterBottom>
           Upload Main Logo
@@ -125,7 +125,7 @@ const LogoUpload: React.FC = () => {
             onClick={handleMainUpload}
             disabled={isMainLoading || !mainFile}
             sx={{
-              backgroundColor: isMainLoading ? 'grey' : '#3f51b5',
+              backgroundColor: isLoading ? 'grey' : '#3f51b5',
               '&:hover': {
                 backgroundColor: isMainLoading ? 'grey' : '#303f9f',
               },

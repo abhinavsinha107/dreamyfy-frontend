@@ -185,10 +185,10 @@ interface GetUserDetails {
     dateOfBirth: Date;
     bio: string;
     profilePicture?: string;
-    };
+  };
   message: string;
   success: boolean;
-  }
+}
 
 interface GetCourseByIdResponse {
   data: {
@@ -236,9 +236,9 @@ interface CreateClassrequest {
 interface GetTeacherClassDetails {
   _id: string;
   name: string;
-  course:{
+  course: {
     name: string;
-  }
+  };
   description: string;
   startTime: string;
   endTime: string;
@@ -263,4 +263,54 @@ interface StripeRequest {
   name: string;
   price: number;
   description: string;
+}
+
+interface BookSessionResponse {
+  data: any;
+  message: string;
+  success: boolean;
+}
+
+interface GetSessionsResponse {
+  data: {
+    _id: string;
+    name: string;
+    email: string;
+    date: string;
+    time: string;
+    comments: string;
+    approved: boolean;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  }[];
+  message: string;
+  success: true;
+}
+
+interface ApproveSessionResponse {
+  data: {
+    _id: string;
+    name: string;
+    email: string;
+    date: string;
+    time: string;
+    comments: string;
+    approved: boolean;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+  message: string;
+  success: boolean;
+}
+
+interface GetChatDetailsResponse {
+  data: {
+    _id: string;
+    name: string;
+    email: string;
+  }[];
+  message: string;
+  success: boolean;
 }

@@ -58,12 +58,12 @@ export const api = createApi({
       }),
       providesTags: ["Subject"],
     }),
-    
+
     getSubjectCourses: builder.query<any, void>({
       query: (body) => ({
         url: `filter/courses`,
         method: "POST",
-        body
+        body,
       }),
       providesTags: ["Course"],
     }),
@@ -156,14 +156,14 @@ export const api = createApi({
       query: (body) => ({
         url: `payments`,
         method: "POST",
-        body
+        body,
       }),
     }),
     createConnectedAccount: builder.mutation<any, any>({
       query: (body) => ({
         url: `payments/onBoard`,
         method: "POST",
-        body
+        body,
       }),
     }),
     fetchMainLogo: builder.query<string, void>({
@@ -201,6 +201,39 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+    bookSession: builder.mutation<BookSessionResponse, any>({
+      query: (body) => ({
+        url: "/session",
+        method: "POST",
+        body,
+      }),
+      transformErrorResponse: (response) => response.data,
+    }),
+    getSessions: builder.query<GetSessionsResponse, void>({
+      query: () => ({
+        url: `/session`,
+        method: "GET",
+      }),
+    }),
+    getSessionStatus: builder.query<any, string>({
+      query: (sessionId) => ({
+        url: `/session/${sessionId}/approved`,
+        method: "GET",
+      }),
+    }),
+    approveSession: builder.mutation<ApproveSessionResponse, string>({
+      query: (sessionId) => ({
+        url: `/session/${sessionId}`,
+        method: "PATCH",
+      }),
+      transformErrorResponse: (response) => response.data,
+    }),
+    getChatDetails: builder.query<GetChatDetailsResponse, void>({
+      query: () => ({
+        url: `/chat`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -229,5 +262,12 @@ export const {
   useFetchMainLogoQuery,
   useUploadMainLogoMutation,
   useCreateInvesterMutation,
-  useGetInvestmentRequestsQuery
+  useGetInvestmentRequestsQuery,
+  useUploadLogoMutation,
+  useFetchCurrentLogoQuery,
+  useBookSessionMutation,
+  useGetSessionsQuery,
+  useLazyGetSessionStatusQuery,
+  useApproveSessionMutation,
+  useGetChatDetailsQuery
 } = api;

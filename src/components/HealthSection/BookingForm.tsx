@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Container, Typography, TextField, Button } from '@mui/material';
+import { useBookSessionMutation } from '../../services/api';
+import { notifyError, notifySuccess } from '../../toast';
 
 interface FormValues {
     name: string;
@@ -13,14 +15,26 @@ interface FormValues {
 const BookingForm: React.FC = () => {
     const { control, handleSubmit, formState: { errors } } = useForm<FormValues>();
 
-    const onSubmit = (data: FormValues) => {
+    const [bookSession, {data}] = useBookSessionMutation();
+
+    const onSubmit = async (data: FormValues) => {
         // Handle form submission logic here
-        console.log(data);
+        try {
+            const res = await bookSession(data).unwrap();
+            notifySuccess(res?.message);
+        } catch (err) {
+            const error = err as ErrorResponse;
+      const message =
+        error?.message === "Validation error!"
+          ? error.data?.errors[0].msg ?? "Something went wrong"
+          : error?.message ?? "Something went wrong";
+      notifyError(message);
+        }
     };
 
     return (
         <Container maxWidth="sm">
-            <Typography variant="h4" gutterBottom>
+            {!data && <><Typography variant="h4" gutterBottom>
                 Book a Session
             </Typography>
 
@@ -130,6 +144,8 @@ const BookingForm: React.FC = () => {
                     Book Now
                 </Button>
             </form>
+            </>}
+            {data && <Typography>Session booked with session Id: {data?.data?._id}</Typography>}
         </Container>
     );
 };
