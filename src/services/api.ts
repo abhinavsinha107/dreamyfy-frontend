@@ -263,8 +263,6 @@ export const {
   useUploadMainLogoMutation,
   useCreateInvesterMutation,
   useGetInvestmentRequestsQuery,
-  useUploadLogoMutation,
-  useFetchCurrentLogoQuery,
   useBookSessionMutation,
   useGetSessionsQuery,
   useLazyGetSessionStatusQuery,
