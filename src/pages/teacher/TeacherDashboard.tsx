@@ -26,7 +26,7 @@ import TeacherClassDetails from "./TeacherClassDetails";
 import TeacherPaymentsPage from "./TeacherPaymentsPage";
 import Chat from "../StudentTeacherChat";
 import StudentTeacherChat from "../StudentTeacherChat";
-import EditClassForm from "./EditClassForm ";
+import EditClassForm from "./EditClassForm";
 // import TeacherViewStudent from "./TeacherViewStudent";
 // import StudentExamMarks from "../admin/studentRelated/StudentExamMarks";
 

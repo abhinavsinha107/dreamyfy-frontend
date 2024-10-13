@@ -74,6 +74,13 @@ export const api = createApi({
       }),
       providesTags: ["Course"],
     }),
+    getStudentCourses: builder.query<GetAllCoursesResponse, void>({
+      query: () => ({
+        url: `courses/enrolled-classes`,
+        method: "GET",
+      }),
+      providesTags: ["Course"],
+    }),
     createCourse: builder.mutation<CreateCourseResponse, CreateCourseRequest>({
       query: (body) => ({
         url: `courses`,
@@ -279,5 +286,6 @@ export const {
   useGetSessionsQuery,
   useLazyGetSessionStatusQuery,
   useApproveSessionMutation,
-  useGetChatDetailsQuery
+  useGetChatDetailsQuery,
+  useGetStudentCoursesQuery,
 } = api;
