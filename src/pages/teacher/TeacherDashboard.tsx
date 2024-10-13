@@ -26,6 +26,7 @@ import TeacherClassDetails from "./TeacherClassDetails";
 import TeacherPaymentsPage from "./TeacherPaymentsPage";
 import Chat from "../StudentTeacherChat";
 import StudentTeacherChat from "../StudentTeacherChat";
+import EditClassForm from "./EditClassForm ";
 // import TeacherViewStudent from "./TeacherViewStudent";
 // import StudentExamMarks from "../admin/studentRelated/StudentExamMarks";
 
@@ -91,7 +92,8 @@ const TeacherDashboard = () => {
             {/* <Route path="/Teacher/complain" element={<TeacherComplain />} /> */}
 
             <Route path="/Teacher/course" element={<TeacherCourseDetails />} />
-            <Route path="/Teacher/add-course" element={<TeacherAddCourse />} />
+            <Route path="/Teacher/add-course" element={<TeacherAddCourse />} /> 
+            <Route path="/Teacher/edit-class/:classId" element={<EditClassForm />} />
             <Route path="/Teacher/class" element={<TeacherClassDetails />} />
             <Route path="/Teacher/add-class" element={<TeacherAddClass />} />
             {/* <Route

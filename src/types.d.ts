@@ -135,6 +135,14 @@ interface GetAllTutorsResponse {
   success: boolean;
 }
 
+interface InvestmentRequest {
+  id: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  note: string;
+}
+
 interface CreateCourseRequest {
   name?: string;
   description?: string;
@@ -236,7 +244,8 @@ interface CreateClassrequest {
 interface GetTeacherClassDetails {
   _id: string;
   name: string;
-  course: {
+  classLink: string;
+  course:{
     name: string;
   };
   description: string;

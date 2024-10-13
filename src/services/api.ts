@@ -138,6 +138,16 @@ export const api = createApi({
       }),
       providesTags: ["Class"],
     }),
+    getClassDetailsById: builder.query({
+      query: (classId) => `/classes/${classId}`,
+    }),
+    updateClass: builder.mutation({
+      query: ({ classId, ...body }) => ({
+        url: `/classes/${classId}`,
+        method: "PUT",
+        body,
+      }),
+    }),
     getCourseById: builder.query<GetCourseByIdResponse, string>({
       query: (courseId) => ({
         url: `courses/${courseId}`,
@@ -263,6 +273,8 @@ export const {
   useUploadMainLogoMutation,
   useCreateInvesterMutation,
   useGetInvestmentRequestsQuery,
+  useGetClassDetailsByIdQuery,
+  useUpdateClassMutation,
   useBookSessionMutation,
   useGetSessionsQuery,
   useLazyGetSessionStatusQuery,
