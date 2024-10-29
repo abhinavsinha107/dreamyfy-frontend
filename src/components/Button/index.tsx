@@ -8,7 +8,7 @@ interface Props {
 const RoundButton = ({ title, style, onClick, icon }: Props) => {
   return (
     <button
-      className="w-full flex items-center justify-center rounded-full bg-[#ffd700] text-[#003366] font-semibold h-[50px]"
+      className="w-full flex items-center justify-center rounded-full bg-[#ffd700] text-[#161e2f] font-semibold h-[50px]"
       style={style}
       onClick={onClick}
     >

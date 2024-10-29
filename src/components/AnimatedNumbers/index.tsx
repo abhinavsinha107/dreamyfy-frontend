@@ -11,8 +11,8 @@ const stats: Stat[] = [
 
 const StatCard: React.FC<StatCardProps> = ({ value, label, isDecimal }) => {
   return (
-    <div className="flex flex-col justify-center items-center gap-2 font-roboto-condensed">
-      <div className="text-3xl font-bold text-white">
+    <div className="flex flex-col justify-center items-center gap-2 w-full font-roboto-condensed last:border-r-0">
+      <div className="text-3xl font-bold text-white ">
         <CountUp
           start={0}
           end={value}
@@ -25,10 +25,10 @@ const StatCard: React.FC<StatCardProps> = ({ value, label, isDecimal }) => {
         {isDecimal && (
           <>
             <span className="text-1xl font-bold text-white">★</span>
+            {/* <span className="text-1xl font-bold text-white">★</span>
             <span className="text-1xl font-bold text-white">★</span>
             <span className="text-1xl font-bold text-white">★</span>
-            <span className="text-1xl font-bold text-white">★</span>
-            <span className="text-1xl font-bold text-white">★</span>
+            <span className="text-1xl font-bold text-white">★</span> */}
           </>
         )}
       </div>
@@ -39,8 +39,8 @@ const StatCard: React.FC<StatCardProps> = ({ value, label, isDecimal }) => {
 
 const AnimatedNumbersComponent: React.FC = () => {
   return (
-    <div className="w-full">
-      <div className="flex justify-center items-center space-x-20 py-12  bg-[#161E2F]">
+    <div className="w-full py-12  bg-[#161E2F]">
+      <div className="flex justify-center items-center container mx-auto *:border-r-slate-600 *:border-r">
         {stats.map((stat, index) => (
           <StatCard
             key={index}

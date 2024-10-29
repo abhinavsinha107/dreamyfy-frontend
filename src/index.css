@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: "Outfit", sans-serif;
   margin: 0;
 }
 
@@ -96,4 +97,23 @@ a {
     padding: 20px;
     border-radius: 12px;
   }
+}
+
+.tutorCarousel .swiper-button-prev,
+.tutorCarousel .swiper-button-next {
+  padding: 15px;
+  background: #fff;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.tutorCarousel .swiper-button-prev:after,
+.tutorCarousel .swiper-button-next:after {
+  font-size: 20px;
+  font-weight: 900;
+  color: #161e2f;
 }

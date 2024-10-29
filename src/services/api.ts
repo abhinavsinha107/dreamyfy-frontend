@@ -155,6 +155,13 @@ export const api = createApi({
         body,
       }),
     }),
+    getClassByCourse: builder.query<GetClassDetails, void>({
+      query: (id) => ({
+        url: `classes/course/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["Class"],
+    }),
     getCourseById: builder.query<GetCourseByIdResponse, string>({
       query: (courseId) => ({
         url: `courses/${courseId}`,
@@ -288,4 +295,5 @@ export const {
   useApproveSessionMutation,
   useGetChatDetailsQuery,
   useGetStudentCoursesQuery,
+    useGetClassByCourseQuery,
 } = api;

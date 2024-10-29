@@ -21,37 +21,41 @@ const BrandLogo = () => {
   ];
 
   return (
-    <Swiper
-      modules={[Navigation]}
-      className="bg-gradient-to-b from-[#171a26] via-[#bfc5d4] to-[#171a26]"
-      spaceBetween={50}
-      loop={true}
-      centeredSlides={isMobile ? true : false}
-      slidesPerView={isTab ? 3 : isMobile ? 2 : 4}
-      allowSlideNext={true}
-      allowSlidePrev={true}
-      slidesPerGroup={1}
-      navigation
-      style={{
-        paddingRight: isMobile ? "0px" : "40px",
-        paddingLeft: isMobile ? "-40px" : "40px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper: any) => console.log(swiper)}
-    >
-      {logos.map((logo, index) => (
-        <SwiperSlide
-          key={index}
-          className={`flex justify-center items-center my-16`}
-          style={{ display: "flex" }}
+    <section className="w-full py-10 bg-slate-100 tutorCarousel">
+      <div className="container mx-auto">
+        <Swiper
+          modules={[Navigation]}
+          // className="bg-gradient-to-b from-[#171a26] via-[#bfc5d4] to-[#171a26]"
+          spaceBetween={20}
+          loop={true}
+          centeredSlides={isMobile ? true : false}
+          slidesPerView={isTab ? 3 : isMobile ? 2 : 4}
+          allowSlideNext={true}
+          allowSlidePrev={true}
+          slidesPerGroup={1}
+          navigation
+          style={{
+            // paddingRight: isMobile ? "0px" : "40px",
+            // paddingLeft: isMobile ? "-40px" : "40px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper: any) => console.log(swiper)}
         >
-          <img src={logo.src} alt="logo" />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+          {logos.map((logo, index) => (
+            <SwiperSlide
+              key={index}
+              className={`flex justify-center items-center rounded-lg overflow-hidden`}
+              style={{ display: "flex" }}
+            >
+              <img src={logo.src} alt="logo" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
   );
 };
 

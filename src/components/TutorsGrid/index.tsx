@@ -1,6 +1,6 @@
 import { FaLanguage, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import {useGetAllCoursesQuery, useGetAllSubjectsQuery} from "../../services/api.ts";
+import { useGetAllCoursesQuery, useGetAllSubjectsQuery } from "../../services/api.ts";
 export const tutors = [
   {
     subject: "C tutors",
@@ -54,34 +54,34 @@ export const tutors = [
 interface TutorCardProps {
   subject: string;
   id: string
-    // count: number;
-    // icon: React.ReactNode;
+  // count: number;
+  // icon: React.ReactNode;
 }
 
-const TutorCard: React.FC<TutorCardProps> = ({ subject, id}) => {
+const TutorCard: React.FC<TutorCardProps> = ({ subject, id }) => {
   const navigate = useNavigate(); // Hook for navigation
 
-  const handleCardClick = (sub_name,id) => {
+  const handleCardClick = (sub_name, id) => {
     navigate(`/subject/${sub_name}/${id}`);
   };
 
   return (
-      <div
-          className="flex bg-white items-center p-4 m-1 border rounded-lg duration-900 transform hover:-translate-y-2 cursor-pointer"
-          style={{ backgroundColor: "rgb(255 255 255)" }} // Inline style for background color
-          onClick={() =>handleCardClick(subject,id)} // Click handler to navigate to new page
-      >
-        {/*<div className="w-10 h-12 mr-4 flex items-center justify-center">*/}
-        {/*  {icon}*/}
-        {/*</div>*/}
-        <div>
-          <div className="font-bold text-xl font-roboto-condensed">{subject}</div>
-          {/*<div className="text-gray-500">{count.toLocaleString()} teachers</div>*/}
-        </div>
-        <div className="ml-auto">
-          <FaArrowRight className="w-6 h-6 text-gray-500" />
-        </div>
+    <div
+      className="flex bg-white items-center p-4 border rounded-lg hover:bg-[#D8B74E] transition-all duration-300 cursor-pointer"
+
+      onClick={() => handleCardClick(subject, id)} // Click handler to navigate to new page
+    >
+      {/*<div className="w-10 h-12 mr-4 flex items-center justify-center">*/}
+      {/*  {icon}*/}
+      {/*</div>*/}
+      <div>
+        <div className="font-bold text-xl font-roboto-condensed">{subject}</div>
+        {/*<div className="text-gray-500">{count.toLocaleString()} teachers</div>*/}
       </div>
+      <div className="ml-auto">
+        <FaArrowRight className="w-6 h-6" />
+      </div>
+    </div>
   );
 };
 
@@ -89,20 +89,23 @@ const TutorsGrid: React.FC = () => {
   const navigate = useNavigate();
   const { data: subjects } = useGetAllSubjectsQuery();
   return (
-      <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 py-12 px-10"
-          style={{ backgroundColor: "rgb(246 246 250)" }} // Inline style for grid background color
-      >
-        {subjects?.data?.map((subject, index) => (
+    <section style={{ backgroundColor: "rgb(246 246 250)" }}>
+      <div className="container mx-auto">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ${subjects?.data?.length === 0 ? 'py-0' : 'py-12'} px-4 md:px-10`}
+        >
+          {subjects?.data?.map((subject, index) => (
             <TutorCard
-                key={index}
-                subject={subject.name}
-                id = {subject._id}
-                // count={tutor.count}
-                // icon={tutor.icon}
+              key={index}
+              subject={subject.name}
+              id={subject._id}
+            // count={tutor.count}
+            // icon={tutor.icon}
             />
-        ))}
+          ))}
+        </div>
       </div>
+    </section>
   );
 };
 

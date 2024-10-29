@@ -21,7 +21,7 @@ const Homepage = () => {
     <>
       <Header />
       <VideoBanner />
-      {!isLaptop && <AnimatedNumbers />}
+      {/* {!isLaptop && <AnimatedNumbers />} */}
       <TutorsGrid />
       <TutorCarousel />
       <TutorOnboarding />

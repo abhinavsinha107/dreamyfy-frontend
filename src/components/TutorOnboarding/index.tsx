@@ -37,18 +37,20 @@ const TutorOnboarding = () => {
 
   return (
     <section
-      className="text-gray-600 body-font bg-[#171a26] px-[40px]"
+      className="text-gray-600 body-font bg-slate-100 py-16 px-4"
       ref={sectionRef}
     >
-      <motion.p
-        className="text-white text-4xl lg:p-6 sm:p-2 p-1"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : -20 }}
-        transition={{ duration: 0.6 }}
-      >
-        How MyDreamFy works ?
-      </motion.p>
-      <div className="container px-5 py-6 mx-auto">
+      <div className="container mx-auto ">
+        <motion.p
+          className="text-gray-900 font-semibold text-3xl md:text-4xl pb-12 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : -20 }}
+          transition={{ duration: 0.6 }}
+        >
+          How MyDreamFy works ?
+        </motion.p>
+      </div>
+      <div className="container mx-auto">
         <div className="flex flex-wrap -m-4">
           <motion.div
             className="lg:p-4 sm:p-4 p-2 lg:w-1/3 w-full max-h-[600px]"
@@ -56,76 +58,88 @@ const TutorOnboarding = () => {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : -50 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="h-full border-2 bg-white border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <div className="px-[30px] py-[20px]">
-                <div>
-                  <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+            <div className="h-full bg-white rounded-2xl hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 overflow-hidden">
+              <div className="md:px-[30px] px-[20px] py-[20px]">
+                <div className="flex gap-3 items-center mb-4">
+                  <h2 className="tracking-widest text-xs title-font font-medium text-gray-400">
                     <TbHexagonNumber1Filled className="text-4xl text-cyan-300" />
                   </h2>
-                  <h1 className="title-font text-3xl font-bold text-gray-900 mb-3">
+                  <h1 className="title-font text-xl font-medium text-gray-900">
                     Find a Tutor
                   </h1>
                 </div>
 
-                <p className="leading-relaxed mb-3">
+                <p className="leading-relaxed mb-6 text-sm">
                   We will connect you to a tutor who will motivate, challenge
                   and inspire you.
                 </p>
 
-                <div className="relative w-full h-[400px]">
-                  <div className="absolute top-8 z-20 flex p-4 bg-white border border-gray-300 rounded-md w-[82%]">
-                    <img
-                      width={isMobile ? 40 : 80}
-                      className="object-contain "
-                      src={WomenTutor}
-                      alt="tutor"
-                    />
-                    <div className="flex flex-col justify-around sm:h-[120px] h-[80px] p-1 w-full">
-                      <p className="flex items-center justify-between h-1/3 px-2 sm:text-sm text-xs">
-                        Venice Holland
-                      </p>
-                      <p className="flex items-center h-1/3 px-2 sm:text-sm text-xs">
-                        Javascript
-                      </p>
-                      <p className="flex items-center h-1/3 px-2 sm:text-sm text-xs">
+                <div className="relative w-full flex flex-col gap-3">
+                  <div className="shadow-lg flex gap-3 items-center p-4 bg-white border border-gray-100 rounded-md w-full">
+                    <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                      <img
+                        // width={isMobile ? 40 : 80}
+                        className="object-cover rounded-full w-full h-full"
+                        src={WomenTutor}
+                        alt="tutor"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1 w-full">
+                      <div className="flex justify-between items-center">
+                        <p className="flex items-center justify-between font-semibold text-sm">
+                          Venice Holland
+                        </p>
+                        <p className="flex items-center text-xs text-gray-400">
+                          Javascript
+                        </p>
+                      </div>
+                      <p className="flex items-center text-sm">
                         Speaks English & Polish
                       </p>
                     </div>
                   </div>
-                  <div className="flex absolute z-10 top-32 left-8 p-4 border bg-white border-gray-300 rounded-md w-[84%]">
-                    <img
-                      width={isMobile ? 40 : 80}
-                      className="object-contain "
-                      src={ManTutor2}
-                      alt="tutor"
-                    />
-                    <div className="flex flex-col justify-around sm:h-[120px] h-[80px] p-1 w-full">
-                      <p className="flex items-center justify-between h-1/3 px-2 sm:text-sm text-xs">
-                        Venice Holland
-                      </p>
-                      <p className="flex items-center h-1/3 px-2 sm:text-sm text-xs">
-                        Mathematics
-                      </p>
-                      <p className="flex items-center h-1/3 px-2 sm:text-sm text-xs">
+                  <div className="shadow-lg flex gap-3 items-center p-4 border bg-white border-gray-100 rounded-md w-full">
+                    <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                      <img
+                        // width={isMobile ? 40 : 80}
+                        className="object-cover rounded-full w-full h-full"
+                        src={ManTutor2}
+                        alt="tutor"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1 w-full">
+                      <div className="flex justify-between items-center">
+                        <p className="flex items-center justify-between font-semibold text-sm">
+                          Venice Holland
+                        </p>
+                        <p className="flex items-center text-xs text-gray-400">
+                          Mathematics
+                        </p>
+                      </div>
+                      <p className="flex items-center text-sm">
                         Speaks English & German
                       </p>
                     </div>
                   </div>
-                  <div className="flex absolute top-56 left-16 p-4 border bg-white border-gray-300 rounded-md w-[86%]">
-                    <img
-                      width={isMobile ? 40 : 80}
-                      className="object-contain"
-                      src={WomenTutor}
-                      alt="tutor"
-                    />
-                    <div className="flex flex-col justify-around sm:h-[120px] h-[80px] p-1 w-full">
-                      <p className="flex items-center justify-between h-1/3 px-2 sm:text-sm text-xs">
-                        Venice Holland
-                      </p>
-                      <p className="flex items-center h-1/3 px-2 sm:text-sm text-xs">
-                        Physics
-                      </p>
-                      <p className="flex items-center h-1/3 px-2 sm:text-sm text-xs">
+                  <div className="shadow-lg flex gap-3 items-center p-4 border bg-white border-gray-100 rounded-md w-full">
+                    <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                      <img
+                        // width={isMobile ? 40 : 80}
+                        className="object-cover rounded-full w-full h-full"
+                        src={WomenTutor}
+                        alt="tutor"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1 w-full">
+                      <div className="flex justify-between items-center">
+                        <p className="flex items-center justify-between font-semibold text-sm">
+                          Venice Holland
+                        </p>
+                        <p className="flex items-center text-xs text-gray-400">
+                          Physics
+                        </p>
+                      </div>
+                      <p className="flex items-center text-sm">
                         Speaks English & French
                       </p>
                     </div>
@@ -140,20 +154,22 @@ const TutorOnboarding = () => {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : -50 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="h-full border-2 bg-white border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <div className="px-[30px] py-[20px]">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                  <TbHexagonNumber2Filled className="text-4xl text-yellow-300" />
-                </h2>
-                <h1 className="title-font text-3xl font-bold text-gray-900 mb-3">
-                  Start learning
-                </h1>
-                <p className="leading-relaxed mb-3">
+            <div className="h-full bg-white rounded-2xl hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 overflow-hidden">
+              <div className="md:px-[30px] px-[20px] py-[20px]">
+                <div className="flex gap-3 items-center mb-4">
+                  <h2 className="tracking-widest text-xs title-font font-medium text-gray-400">
+                    <TbHexagonNumber2Filled className="text-4xl text-yellow-300" />
+                  </h2>
+                  <h1 className="title-font text-xl font-medium text-gray-900">
+                    Start learning
+                  </h1>
+                </div>
+                <p className="leading-relaxed mb-6 text-sm">
                   Your tutor will guide the way through your first lesson and
                   help you guide your next step.
                 </p>
 
-                <div className="relative w-full max-h-[400px] p-4 border rounded-md border-gray-300 lg:pt-12 sm:pt-4">
+                <div className="relative w-full max-h-[400px]">
                   <motion.img
                     src={StudentOnCall}
                     className="object-cover rounded-md"
@@ -172,20 +188,24 @@ const TutorOnboarding = () => {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : -50 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <div className="h-full border-2 bg-white border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <div className="px-[30px] py-[20px]">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                  <TbHexagonNumber3Filled className="text-4xl text-blue-300" />
-                </h2>
-                <h1 className="title-font text-3xl font-bold text-gray-900 mb-3">
-                  Speak. Read. Write. Repeat.
-                </h1>
-                <p className="leading-relaxed mb-3">
+            <div className="h-full bg-white rounded-2xl hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 overflow-hidden">
+              <div className="md:px-[30px] px-[20px] py-[20px]">
+                <div className="flex gap-3 items-center mb-4">
+
+                  <h2 className="tracking-widest text-xs title-font font-medium text-gray-400">
+                    <TbHexagonNumber3Filled className="text-4xl text-blue-300" />
+                  </h2>
+                  <h1 className="title-font text-xl font-medium text-gray-900">
+                    Speak. Read. Write. Repeat.
+                  </h1>
+                </div>
+
+                <p className="leading-relaxed mb-6 text-sm">
                   Choose how many lessons you want to take each week and get
                   ready to reach your goals.
                 </p>
 
-                <div className="relative w-full max-h-[400px] p-4 border rounded-md border-gray-300 lg:pt-12 sm:pt-4">
+                <div className="relative w-full max-h-[400px] ">
                   <motion.img
                     src={LearnAndRepeat}
                     className="object-cover rounded-md"
