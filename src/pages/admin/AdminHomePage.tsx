@@ -38,7 +38,7 @@ const AdminHomePage = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper sx={{
-              boxShadow: '0px 10px 20px #c2c2c2',
+              boxShadow: 'none',
               borderRadius: 2,
               justifyContent: 'center',
               gap: 2
@@ -50,7 +50,7 @@ const AdminHomePage = () => {
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper sx={{
-              boxShadow: '0px 10px 20px #c2c2c2',
+              boxShadow: 'none',
               borderRadius: 2,
               justifyContent: 'center',
               gap: 2
@@ -62,7 +62,7 @@ const AdminHomePage = () => {
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper sx={{
-              boxShadow: '0px 10px 20px #c2c2c2',
+              boxShadow: 'none',
               borderRadius: 2,
               justifyContent: 'center',
               gap: 2
@@ -74,7 +74,7 @@ const AdminHomePage = () => {
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper sx={{
-              boxShadow: '0px 10px 20px #c2c2c2',
+              boxShadow: 'none',
               borderRadius: 2,
               justifyContent: 'center',
               gap: 2
@@ -84,14 +84,14 @@ const AdminHomePage = () => {
               <Data start={0} end={23000} duration={2.5} prefix="$" />{" "}
             </StyledPaper>
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          {/* <Grid item xs={12} md={12} lg={12}>
             <Paper sx={{
-              p: 2, display: "flex", flexDirection: "column", boxShadow: '0px 10px 20px #c2c2c2',
+              p: 2, display: "flex", flexDirection: "column", boxShadow: 'none',
               borderRadius: 2,
             }}>
-              {/* <SeeNotice /> */}
+              <SeeNotice />
             </Paper>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </>

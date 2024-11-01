@@ -99,7 +99,7 @@ const TeacherProfile = () => {
     if (isSuccess) {
       notifySuccess("Profile pic uploaded successfully");
     }
-  },[isSuccess]);
+  }, [isSuccess]);
 
   return (
     <>

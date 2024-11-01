@@ -37,7 +37,7 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
 
   return (
     <>
-      <TableContainer>
+      <TableContainer sx={{ borderRadius: 2 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <StyledTableRow>
@@ -47,13 +47,13 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
                   <StyledTableCell
                     key={column.id}
                     align={column.align}
-                    style={{ minWidth: column.minWidth }}
+                    style={{ minWidth: column.minWidth, backgroundColor: '#161e2f' }}
                   >
                     {column.label}
                   </StyledTableCell>
                 );
               })}
-              <StyledTableCell align="center">Actions</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: '#161e2f' }} align="center">Actions</StyledTableCell>
             </StyledTableRow>
           </TableHead>
           <TableBody>

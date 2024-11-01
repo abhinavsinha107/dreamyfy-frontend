@@ -1,6 +1,7 @@
 import React from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper, Container } from "@mui/material";
 import { useGetInvestmentRequestsQuery } from "../../services/api";
+import { StyledTableCell, StyledTableRow } from "../../components/styles";
 
 interface InvestmentRequest {
   id: string;
@@ -18,28 +19,30 @@ const InvestmentRequests: React.FC = () => {
   if (error) return <Typography>Error fetching investment requests.</Typography>;
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell><strong>Name</strong></TableCell>
-            <TableCell><strong>Email</strong></TableCell>
-            <TableCell><strong>Phone Number</strong></TableCell>
-            <TableCell><strong>Note</strong></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {investmentRequests.map((request: InvestmentRequest) => (
-            <TableRow key={request._id}>
-              <TableCell>{request.name}</TableCell>
-              <TableCell>{request.email}</TableCell>
-              <TableCell>{request.phoneNumber}</TableCell>
-              <TableCell>{request.note}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Container maxWidth="lg" sx={{ marginTop: "2rem" }}>
+      <TableContainer sx={{ borderRadius: 2 }}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <StyledTableRow>
+              <StyledTableCell style={{ backgroundColor: '#161e2f', color: '#fff' }}><strong>Name</strong></StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: '#161e2f', color: '#fff' }}><strong>Email</strong></StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: '#161e2f', color: '#fff' }}><strong>Phone Number</strong></StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: '#161e2f', color: '#fff' }}><strong>Note</strong></StyledTableCell>
+            </StyledTableRow>
+          </TableHead>
+          <TableBody>
+            {investmentRequests.map((request: InvestmentRequest) => (
+              <StyledTableRow key={request._id}>
+                <StyledTableCell>{request.name}</StyledTableCell>
+                <StyledTableCell>{request.email}</StyledTableCell>
+                <StyledTableCell>{request.phoneNumber}</StyledTableCell>
+                <StyledTableCell>{request.note}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
   );
 };
 

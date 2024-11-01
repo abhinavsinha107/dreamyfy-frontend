@@ -245,7 +245,7 @@ interface GetTeacherClassDetails {
   _id: string;
   name: string;
   classLink: string;
-  course:{
+  course: {
     name: string;
   };
   description: string;
