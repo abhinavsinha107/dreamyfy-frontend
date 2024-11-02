@@ -40,7 +40,7 @@ const AdminHomePage = () => {
             <StyledPaper sx={{
               boxShadow: 'none',
               borderRadius: 2,
-              justifyContent: 'center',
+              justifyContent: 'center !important',
               gap: 2
             }}>
               <img src={Students} alt="Students" />
@@ -52,7 +52,7 @@ const AdminHomePage = () => {
             <StyledPaper sx={{
               boxShadow: 'none',
               borderRadius: 2,
-              justifyContent: 'center',
+              justifyContent: 'center !important',
               gap: 2
             }}>
               <img src={Classes} alt="Classes" />
@@ -64,7 +64,7 @@ const AdminHomePage = () => {
             <StyledPaper sx={{
               boxShadow: 'none',
               borderRadius: 2,
-              justifyContent: 'center',
+              justifyContent: 'center !important',
               gap: 2
             }}>
               <img src={Teachers} alt="Teachers" />
@@ -76,7 +76,7 @@ const AdminHomePage = () => {
             <StyledPaper sx={{
               boxShadow: 'none',
               borderRadius: 2,
-              justifyContent: 'center',
+              justifyContent: 'center !important',
               gap: 2
             }}>
               <img src={Fees} alt="Fees" />

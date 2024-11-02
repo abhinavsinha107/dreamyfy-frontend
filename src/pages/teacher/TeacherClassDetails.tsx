@@ -9,6 +9,7 @@ import {
   MenuList,
   MenuItem,
   Box,
+  Container,
 } from "@mui/material";
 import { BlackButton } from "../../components/buttonStyles";
 import TableTemplate from "../../components/TableTemplate";
@@ -27,7 +28,7 @@ const TeacherClassDetails = () => {
     { id: "startTime", label: "Start Time", minWidth: 100 },
     { id: "endTime", label: "End Time", minWidth: 100 },
     { id: "actions", label: "Actions", minWidth: 100 },
-    
+
   ];
 
   function convertToUserTimeZone(utcDate) {
@@ -52,7 +53,7 @@ const TeacherClassDetails = () => {
       setOpen((prevOpen) => !prevOpen);
     };
 
-    const handleMenuItemClick = (event, index,classId) => {
+    const handleMenuItemClick = (event, index, classId) => {
       if (index === 0) {
         navigate(`/Teacher/edit-class/${classId}`);
       } else if (index === 1) {
@@ -104,7 +105,7 @@ const TeacherClassDetails = () => {
                         key={option}
                         selected={index === selectedIndex}
                         onClick={(event) =>
-                          handleMenuItemClick(event, index,classId)
+                          handleMenuItemClick(event, index, classId)
                         }
                       >
                         {option}
@@ -144,20 +145,22 @@ const TeacherClassDetails = () => {
 
   return (
     <>
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <Box sx={{ display: "flex", justifyContent: "space-between", margin: "1rem" }}>
-        <Typography variant="h5" gutterBottom mt={1}>
-          Your Classes:
-        </Typography>
-      </Box>
-      {classes?.data && classes?.data.length > 0 && (
-        <TableTemplate
-          buttonHaver={(row) => row.actions}
-          columns={classColumn}
-          rows={classRows}
-        />
-      )}
-    </Paper>
+      <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", paddingY: 2, }}>
+            <Typography variant="h5" gutterBottom mt={1}>
+              Your Classes
+            </Typography>
+          </Box>
+          {classes?.data && classes?.data.length > 0 && (
+            <TableTemplate
+              buttonHaver={(row) => row.actions}
+              columns={classColumn}
+              rows={classRows}
+            />
+          )}
+        </Container>
+      </Paper>
     </>
   );
 };

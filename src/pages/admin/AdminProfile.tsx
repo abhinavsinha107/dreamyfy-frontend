@@ -114,7 +114,7 @@ const AdminProfile = () => {
 
   return (
     <>
-      <Container maxWidth="lg" sx={{ marginTop: "2rem" }}>
+      <Container maxWidth="lg" className="my-6">
         <StyledPaper elevation={0}>
           <Grid container spacing={0}>
             <Grid item xs={12}>
@@ -139,7 +139,7 @@ const AdminProfile = () => {
                 </Avatar>
                 <label
                   style={{
-                    backgroundColor: "#1976D2",
+                    backgroundColor: "#161e2f",
                     borderRadius: "50%",
                     width: "2.5rem",
                     height: "2.5rem",
@@ -188,6 +188,18 @@ const AdminProfile = () => {
                 onClick={() => setIsDisable(false)}
                 variant="contained"
                 endIcon={<AddIcon />}
+                sx={{
+                  color: 'white',
+                  '&:hover': {
+                    backgroundColor: '#d8b74e',
+                    boxShadow: 'none',
+                  },
+                  '&:focus': {
+                    backgroundColor: '#d8b74e',
+                  },
+                  boxShadow: 'none', backgroundColor: '#161e2f', borderRadius: 40,
+                }}
+
               >
                 Edit
               </Button>
@@ -319,7 +331,19 @@ const AdminProfile = () => {
                 </Grid>
               </Grid>
               <Box sx={{ textAlign: "end", marginTop: "1rem" }}>
-                <Button type="submit" variant="contained">
+                <Button type="submit" variant="contained"
+                  sx={{
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: '#d8b74e',
+                      boxShadow: 'none',
+                    },
+                    '&:focus': {
+                      backgroundColor: '#d8b74e',
+                    },
+                    boxShadow: 'none', backgroundColor: '#161e2f', borderRadius: 40,
+                  }}
+                >
                   SUBMIT
                 </Button>
               </Box>
