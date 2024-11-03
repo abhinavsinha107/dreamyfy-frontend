@@ -11,38 +11,58 @@ const StudentHomePage = () => {
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={3} lg={3}>
-            <StyledPaper>
+            <StyledPaper sx={{
+              boxShadow: 'none',
+              borderRadius: 2,
+              justifyContent: 'center',
+              gap: 2
+            }}>
               <img src={Subject} alt="Subjects" />
-              <Title>Total Subjects</Title>
+              <Title className="font-semibold">Total Subjects</Title>
               <Data start={0} end={10} duration={2.5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
-            <StyledPaper>
+            <StyledPaper sx={{
+              boxShadow: 'none',
+              borderRadius: 2,
+              justifyContent: 'center',
+              gap: 2
+            }}>
               <img src={Assignment} alt="Assignments" />
-              <Title>Total Assignments</Title>
+              <Title className="font-semibold">Total Assignments</Title>
               <Data start={0} end={15} duration={4} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
-            <StyledPaper>
+            <StyledPaper sx={{
+              boxShadow: 'none',
+              borderRadius: 2,
+              justifyContent: 'center',
+              gap: 2
+            }}>
               <img src={Subject} alt="Subjects" />
-              <Title>Total Subjects</Title>
+              <Title className="font-semibold">Total Subjects</Title>
               <Data start={0} end={10} duration={2.5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
-            <StyledPaper>
+            <StyledPaper sx={{
+              boxShadow: 'none',
+              borderRadius: 2,
+              justifyContent: 'center',
+              gap: 2
+            }}>
               <img src={Assignment} alt="Assignments" />
-              <Title>Total Assignments</Title>
+              <Title className="font-semibold">Total Assignments</Title>
               <Data start={0} end={15} duration={4} />
             </StyledPaper>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-              {/* <SeeNotice /> */}
+              <SeeNotice />
             </Paper>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </>

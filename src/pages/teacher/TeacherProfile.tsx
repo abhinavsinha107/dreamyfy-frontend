@@ -162,7 +162,7 @@ const TeacherProfile = () => {
             </Grid>
           </Grid>
         </StyledPaper>
-        <Card>
+        <Card elevation={0}>
           <CardContent>
             <Grid
               container
