@@ -46,14 +46,14 @@ const VideoBanner = () => {
 
           <div className="flex items-center mb-6">
             <div className="relative w-full max-w-lg">
-              <input
-                className="flex-grow rounded-full w-full pl-4 pr-12 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent border border-gray-300 transition duration-200"
+               <input
+                className="flex-grow rounded-full w-full pl-4 pr-12 py-4 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent border border-gray-300 transition duration-200"
                 placeholder="Ex: Coach sportif, nutritionniste..."
                 type="text"
               />
-              <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center transition duration-200 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
-                <i className="fas fa-arrow-right"></i>
-              </button>
+             <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black text-white rounded-full w-10 h-10 flex items-center justify-center transition duration-200 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50">
+            <i className="fas fa-search"></i>
+          </button>
             </div>
           </div>
 
