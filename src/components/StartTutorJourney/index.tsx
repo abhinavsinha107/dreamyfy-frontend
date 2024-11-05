@@ -1,7 +1,7 @@
 import RoundButton from "../Button";
 import { FaArrowRightLong } from "react-icons/fa6";
 import useWindowResize from "../../hooks/useWindowResize";
-import BecomeTutorMan from "../../assets/Images/BecomeTutorMan.png";
+import BecomeTutorMan from "../../assets/Images/BecomeTutorMan.jpg";
 import { useNavigate } from "react-router-dom";
 
 const StartTutorJourney = () => {
