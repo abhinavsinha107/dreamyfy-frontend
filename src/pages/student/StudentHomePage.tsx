@@ -14,28 +14,28 @@ const StudentHomePage = () => {
             <StyledPaper>
               <img src={Subject} alt="Subjects" />
               <Title>Total Subjects</Title>
-              <Data start={0} end={10} duration={2.5} />
+              <Data start={0} end={0} duration={2.5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Assignment} alt="Assignments" />
               <Title>Total Assignments</Title>
-              <Data start={0} end={15} duration={4} />
+              <Data start={0} end={0} duration={4} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Subject} alt="Subjects" />
               <Title>Total Subjects</Title>
-              <Data start={0} end={10} duration={2.5} />
+              <Data start={0} end={0} duration={2.5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Assignment} alt="Assignments" />
               <Title>Total Assignments</Title>
-              <Data start={0} end={15} duration={4} />
+              <Data start={0} end={0} duration={4} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12}>

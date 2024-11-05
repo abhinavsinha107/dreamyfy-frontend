@@ -17,7 +17,9 @@ import { notifyError, notifySuccess } from "../../toast";
 import {
   useGetAllSubjectsQuery,
   useCreateCourseMutation,
+  useUploadDocsMutation,
 } from "../../services/api";
+import { useState } from "react";
 
 interface ICourseInput {
   name?: string;
@@ -26,10 +28,14 @@ interface ICourseInput {
   startDate?: Date;
   endDate?: Date;
   subject?: string;
+  attachment_url?: string;
 }
 
 const TeacherAddCourse = () => {
   const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null); // New state for file
+  const [attachmentUrl, setAttachmentUrl] = useState<string | null>(null); // Store the uploaded URL
+  const [uploadDocs] = useUploadDocsMutation();
 
   const {
     handleSubmit,
@@ -45,6 +51,9 @@ const TeacherAddCourse = () => {
 
   const onSubmit: SubmitHandler<ICourseInput> = async (data: ICourseInput) => {
     try {
+      if (attachmentUrl) {
+        data.attachment_url = attachmentUrl; // Include attachment URL in form data
+      }
       const res = await createCourse(data).unwrap();
       notifySuccess(res?.message);
       reset();
@@ -59,16 +68,27 @@ const TeacherAddCourse = () => {
     }
   };
 
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+
+    if (file) {
+      try {
+        const { data: attachmentData } = await uploadDocs(file); 
+        const fileUrl = attachmentData.data.fileUrl;
+        setAttachmentUrl(fileUrl); // Store the file URL for form submission
+        console.log("Uploaded file URL:", fileUrl);
+      } catch (error) {
+        console.error("File upload failed", error);
+      }
+    }
+  };
+
   return (
     <>
       <StyledContainer>
         <StyledBox>
-          <Stack
-            sx={{
-              alignItems: "center",
-              mb: 3,
-            }}
-          >
+          <Stack sx={{ alignItems: "center", mb: 3 }}>
             <img src={Classroom} alt="classroom" style={{ width: "80%" }} />
           </Stack>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -111,9 +131,7 @@ const TeacherAddCourse = () => {
                     id="description"
                     label="Enter course description"
                     error={!!errors.description}
-                    helperText={
-                      errors.description ? errors.description.message : ""
-                    }
+                    helperText={errors.description ? errors.description.message : ""}
                   />
                 )}
               />
@@ -155,9 +173,7 @@ const TeacherAddCourse = () => {
                     type="date"
                     InputLabelProps={{ shrink: true }}
                     error={!!errors.startDate}
-                    helperText={
-                      errors.startDate ? errors.startDate.message : ""
-                    }
+                    helperText={errors.startDate ? errors.startDate.message : ""}
                   />
                 )}
               />
@@ -209,6 +225,9 @@ const TeacherAddCourse = () => {
                   </TextField>
                 )}
               />
+              
+              {/* File Upload */}
+              <input type="file" onChange={handleFileChange} />
 
               {/* Submit Button */}
               <BlueButton

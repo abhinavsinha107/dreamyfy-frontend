@@ -43,7 +43,7 @@ const TeacherClassDetails = () => {
 
   // Button component that accepts a classId prop for actions
   const StudentsButtonHaver = ({ classId }) => {
-    const options = ["Edit", "Delete"];
+    const options = ["Edit"];
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
     const [selectedIndex] = React.useState(0);
@@ -132,7 +132,6 @@ const TeacherClassDetails = () => {
       endTime: convertToUserTimeZone(classItem.endTime),
       id: classItem._id,
       classLink: classItem.classLink,
-      // Render the action buttons in a new column
       actions: <StudentsButtonHaver classId={classItem._id} />,
     }));
 

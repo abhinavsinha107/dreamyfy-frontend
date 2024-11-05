@@ -11,8 +11,10 @@ import { useEffect } from "react";
 // import { getAllStudents } from '../../redux/studentRelated/studentHandle';
 // import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
 import { RootState, useAppSelector } from "../../redux/store";
+import { useGetCountUsersQuery } from "../../services/api";
 
 const AdminHomePage = () => {
+  const {data: userCount} = useGetCountUsersQuery()
   // const dispatch = useDispatch();
   // const { studentsList } = useSelector((state) => state.student);
   // const { sclassesList } = useSelector((state) => state.sclass);
@@ -40,21 +42,21 @@ const AdminHomePage = () => {
             <StyledPaper>
               <img src={Students} alt="Students" />
               <Title>Total Students</Title>
-              {/* <Data start={0} end={numberOfStudents} duration={2.5} /> */}
+              <Data start={0} end={userCount?.data?.students} duration={2.5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Classes} alt="Classes" />
               <Title>Total Classes</Title>
-              {/* <Data start={0} end={numberOfClasses} duration={5} /> */}
+              <Data start={0} end={userCount?.data?.classes} duration={5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Teachers} alt="Teachers" />
               <Title>Total Teachers</Title>
-              {/* <Data start={0} end={numberOfTeachers} duration={2.5} /> */}
+              <Data start={0} end={userCount?.data?.teachers} duration={2.5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>

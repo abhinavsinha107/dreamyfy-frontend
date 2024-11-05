@@ -80,6 +80,12 @@ const StudentCourseDetails: React.FC = () => {
                     formattedDate(new Date(course?.data?.updatedAt))}{" "}
                 • English
               </Typography>
+              {course?.data?.attachment_url && <a href={course?.data?.attachment_url} target="_blank" rel="noopener noreferrer"
+                             style={{textDecoration: 'none'}}>
+                            <Button variant="outlined" sx={{marginLeft: 2, marginTop: 1}}>
+                            Detailed Pdf
+                            </Button>
+                          </a>}                
             </Paper>
 
             {/* Teacher Details Section */}
@@ -149,6 +155,18 @@ const StudentCourseDetails: React.FC = () => {
                               Class Link
                             </Button>
                           </a>
+                          {classItem?.attachment_url && (
+                                <a 
+                                  href={classItem.attachment_url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  style={{ textDecoration: 'none' }}
+                                >
+                                  <Button variant="outlined" sx={{ marginLeft: 2, marginTop: 1 }}>
+                                    Notes
+                                  </Button>
+                                </a>
+                              )}
                         </Paper>
                     ))
                 ) : (

@@ -5,10 +5,12 @@ import Students from "../../assets/img1.png";
 import Lessons from "../../assets/subjects.svg";
 import Tests from "../../assets/assignment.svg";
 import Time from "../../assets/time.svg";
+import { useGetTeacherStatsQuery } from "../../services/api";
 
 const TeacherHomePage = () => {
   const numberOfStudents = 10;
   const numberOfSessions = 3;
+  const{data: teacherStats} = useGetTeacherStatsQuery()
 
   return (
     <>
@@ -18,28 +20,28 @@ const TeacherHomePage = () => {
             <StyledPaper>
               <img src={Students} alt="Students" />
               <Title>Total Students</Title>
-              <Data start={0} end={numberOfStudents} duration={2.5} />
+              <Data start={0} end={teacherStats?.data?.totalStudents} duration={2.5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Lessons} alt="Lessons" />
               <Title>Total Courses</Title>
-              <Data start={0} end={numberOfSessions} duration={5} />
+              <Data start={0} end={teacherStats?.data?.totalCourses} duration={5} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Tests} alt="Tests" />
               <Title>Total Classes Taken</Title>
-              <Data start={0} end={24} duration={4} />
+              <Data start={0} end={teacherStats?.data?.totalClasses} duration={4} />
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Time} alt="Time" />
               <Title>Total Hours</Title>
-              <Data start={0} end={30} duration={4} suffix="hrs" />{" "}
+              <Data start={0} end={teacherStats?.data?.totalHours} duration={4} suffix="hrs" />{" "}
             </StyledPaper>
           </Grid>
           <Grid item xs={12}>

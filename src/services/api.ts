@@ -74,6 +74,13 @@ export const api = createApi({
       }),
       providesTags: ["Course"],
     }),
+    getSearchCourses: builder.query<any, void>({
+      query: (searchText) => ({
+        url: `courses/search?query=${searchText}`,
+        method: "GET",
+      }),
+      providesTags: ["Course"],
+    }),
     getStudentCourses: builder.query<GetAllCoursesResponse, void>({
       query: () => ({
         url: `courses/enrolled-classes`,
@@ -99,6 +106,20 @@ export const api = createApi({
     getUserDetails: builder.query<GetUserDetails, string>({
       query: (id) => ({
         url: `users/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
+    getCountUsers: builder.query<any, string>({
+      query: () => ({
+        url: `users/count`,
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
+    getTeacherStats: builder.query<any, string>({
+      query: () => ({
+        url: `users/dashboard/teacher`,
         method: "GET",
       }),
       providesTags: ["User"],
@@ -138,6 +159,18 @@ export const api = createApi({
       },
       invalidatesTags: ["User"],
     }),
+    uploadDocs: builder.mutation<any, File>({
+      query: (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        return {
+          url: `upload/attachment-file`,
+          method: "POST",
+          body: formData,
+        };
+      },
+      invalidatesTags: ["User"],
+    }),
     getClassDetails: builder.query<GetClassDetails, void>({
       query: () => ({
         url: `classes/teacher`,
@@ -161,6 +194,13 @@ export const api = createApi({
         method: "GET",
       }),
       providesTags: ["Class"],
+    }),
+    updateCourse: builder.mutation({
+      query: ({ courseId, ...body }) => ({
+        url: `/courses/${courseId}`,
+        method: "PUT",
+        body,
+      }),
     }),
     getCourseById: builder.query<GetCourseByIdResponse, string>({
       query: (courseId) => ({
@@ -295,5 +335,11 @@ export const {
   useApproveSessionMutation,
   useGetChatDetailsQuery,
   useGetStudentCoursesQuery,
-    useGetClassByCourseQuery,
+  useGetClassByCourseQuery,
+  useGetCountUsersQuery,
+  useGetSearchCoursesQuery,
+  useUploadDocsMutation,
+  useUpdateCourseMutation,
+  useGetTeacherStatsQuery,
+
 } = api;

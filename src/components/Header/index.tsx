@@ -11,7 +11,7 @@ import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 import { resetToken } from "../../redux/reducer/authReducer";
 import { resetUser } from "../../redux/reducer/userReducer";
 import { notifySuccess } from "../../toast";
-import { useFetchMainLogoQuery } from "../../services/api";
+import { useFetchMainLogoQuery, useGetSearchCoursesQuery } from "../../services/api";
 import mydreamfylogo from '../../assets/mydreamfy.png';
 
 const Header = () => {
@@ -26,7 +26,7 @@ const Header = () => {
   const [isBarClicked, setIsBarClicked] = useState(false);
   const [bgColor, setBgColor] = useState("bg-[#003366] bg-opacity-50");
   const { data: currentMainLogo } = useFetchMainLogoQuery();
-
+  const {data: searchResult} = useGetSearchCoursesQuery('')
   const navigateToLoginPage = () => {
     navigate("/login");
   };
@@ -76,8 +76,7 @@ const Header = () => {
               <div onClick={navigateToHomePage}
               // className={styles.logo}
               >
-                {/* <img src={currentMainLogo?.data?.logo}></img> */}
-                <img src={mydreamfylogo} className="w-full max-w-60 cursor-pointer" />
+                <img src={currentMainLogo?.data?.logo || mydreamfylogo} className="w-full max-w-60 cursor-pointer" />
                 {/* <span className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white"
                 className={styles.logoText}
                 >MyDreamFy</span> */}

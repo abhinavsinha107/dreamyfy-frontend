@@ -17,7 +17,7 @@ const LogoUpload: React.FC = () => {
   useEffect(() => {
     // Set the initial preview URL for the main logo if it exists
     if (currentMainLogo) {
-      setMainPreviewUrl(currentMainLogo.data.logo);
+      setMainPreviewUrl(currentMainLogo?.data?.logo);
     }
   }, [currentMainLogo]);
 
@@ -125,7 +125,7 @@ const LogoUpload: React.FC = () => {
             onClick={handleMainUpload}
             disabled={isMainLoading || !mainFile}
             sx={{
-              backgroundColor: isLoading ? 'grey' : '#3f51b5',
+              backgroundColor: isMainLoading ? 'grey' : '#3f51b5',
               '&:hover': {
                 backgroundColor: isMainLoading ? 'grey' : '#303f9f',
               },

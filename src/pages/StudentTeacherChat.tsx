@@ -18,6 +18,10 @@ const StudentTeacherChat: React.FC = () => {
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(
     null
   );
+  
+  const currentUser = useAppSelector((state: RootState) => state.user.user);
+
+  const currentRole = currentUser?.role;
   const [roomId, setRoomId] = useState<string>("");
   console.log("roomId", roomId);
   const [input, setInput] = useState<string>("");
@@ -81,7 +85,7 @@ const StudentTeacherChat: React.FC = () => {
           backgroundColor: "#f0f0f0",
         }}
       >
-        <h3 style={{ textAlign: "center" }}>Students</h3>
+        <h3 style={{ textAlign: "center" }}>{currentRole.toLowerCase() == 'student'?'Teachers':'Students'}</h3>
         {data?.data?.map((student) => (
           <div
             key={student._id}
@@ -118,7 +122,7 @@ const StudentTeacherChat: React.FC = () => {
           {selectedStudentId
             ? data?.data?.find((student) => student._id === selectedStudentId)
                 ?.name
-            : "Student"}
+                : currentRole.toLowerCase() == 'student'?'Teacher':'Student'}
         </div>
 
         {/* Chat Messages */}

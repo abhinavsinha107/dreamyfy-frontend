@@ -53,7 +53,6 @@ const TableTemplate = ({ buttonHaver: ButtonHaver, columns, rows }) => {
                   </StyledTableCell>
                 );
               })}
-              <StyledTableCell align="center">Actions</StyledTableCell>
             </StyledTableRow>
           </TableHead>
           <TableBody>

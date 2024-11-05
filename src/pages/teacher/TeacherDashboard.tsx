@@ -27,6 +27,7 @@ import TeacherPaymentsPage from "./TeacherPaymentsPage";
 import Chat from "../StudentTeacherChat";
 import StudentTeacherChat from "../StudentTeacherChat";
 import EditClassForm from "./EditClassForm";
+import EditCourseForm from "./EditCourseForm";
 // import TeacherViewStudent from "./TeacherViewStudent";
 // import StudentExamMarks from "../admin/studentRelated/StudentExamMarks";
 
@@ -35,7 +36,6 @@ const TeacherDashboard = () => {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -94,6 +94,7 @@ const TeacherDashboard = () => {
             <Route path="/Teacher/course" element={<TeacherCourseDetails />} />
             <Route path="/Teacher/add-course" element={<TeacherAddCourse />} /> 
             <Route path="/Teacher/edit-class/:classId" element={<EditClassForm />} />
+            <Route path="/Teacher/edit-course/:courseId" element={<EditCourseForm />} />
             <Route path="/Teacher/class" element={<TeacherClassDetails />} />
             <Route path="/Teacher/add-class" element={<TeacherAddClass />} />
             {/* <Route

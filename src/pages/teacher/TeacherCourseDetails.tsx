@@ -16,6 +16,85 @@ import TableTemplate from "../../components/TableTemplate";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { useGetAllCoursesQuery } from "../../services/api";
 
+// Move StudentsButtonHaver here
+const StudentsButtonHaver = ({ courseId }) => {
+  const options = ["Edit"];
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+  const [selectedIndex] = React.useState(0);
+  const navigate = useNavigate();
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleMenuItemClick = (event, index) => {
+    setOpen(false);
+    if (index === 0) {
+      navigate(`/Teacher/edit-course/${courseId}`);
+    } else if (index === 1) {
+      console.log("Delete course with ID:", courseId);
+    }
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <BlackButton
+        size="small"
+        aria-controls={open ? "split-button-menu" : undefined}
+        aria-expanded={open ? "true" : undefined}
+        aria-haspopup="menu"
+        onClick={handleToggle}
+        ref={anchorRef}
+        sx={{ minWidth: "30px" }}
+      >
+        {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+      </BlackButton>
+      <Popper
+        sx={{ zIndex: 1 }}
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList id="split-button-menu" autoFocusItem>
+                  {options.map((option, index) => (
+                    <MenuItem
+                      key={option}
+                      selected={index === selectedIndex}
+                      onClick={(event) => handleMenuItemClick(event, index)}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </>
+  );
+};
+
 const TeacherCourseDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,99 +106,20 @@ const TeacherCourseDetails = () => {
     { id: "description", label: "Description", minWidth: 100 },
     { id: "isApproved", label: "Approved", minWidth: 100 },
     { id: "addClass", label: "Add Class", minWidth: 100 },
+    { id: "actions", label: "Actions", minWidth: 100 },
   ];
 
   const courseRows =
     courses?.data &&
     courses?.data?.length > 0 &&
-    courses?.data?.map((course) => {
-      return {
-        name: course.name,
-        description: course.description,
-        isApproved: course.isApproved,
-        addClass: "Add Class",
-        id: course._id,
-      };
-    });
-
-  const StudentsButtonHaver = () => {
-    const options = ["Edit", "Delete"];
-
-    const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
-    const [selectedIndex] = React.useState(0);
-
-    // const handleClick = () => {
-    //   console.info(`You clicked ${options[selectedIndex]}`);
-    // };
-
-    const handleToggle = () => {
-      setOpen((prevOpen) => !prevOpen);
-    };
-
-    const handleClose = (event) => {
-      if (anchorRef.current && anchorRef.current.contains(event.target)) {
-        return;
-      }
-
-      setOpen(false);
-    };
-    return (
-      <>
-        <BlackButton
-          size="small"
-          aria-controls={open ? "split-button-menu" : undefined}
-          aria-expanded={open ? "true" : undefined}
-          aria-label="select merge strategy"
-          aria-haspopup="menu"
-          onClick={handleToggle}
-          ref={anchorRef}
-          sx={{ minWidth: "30px" }}
-        >
-          {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-        </BlackButton>
-        <Popper
-          sx={{
-            zIndex: 1,
-          }}
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList id="split-button-menu" autoFocusItem>
-                    {options.map((option, index) => (
-                      <MenuItem
-                        key={option}
-                        disabled={index === 2}
-                        selected={index === selectedIndex}
-                        // onClick={(event) => {
-                        //   handleMenuItemClick(event, index);
-                        // }}
-                      >
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </>
-    );
-  };
+    courses?.data?.map((course) => ({
+      name: course.name,
+      description: course.description,
+      isApproved: course.isApproved,
+      addClass: "Add Class",
+      id: course._id,
+      actions: <StudentsButtonHaver courseId={course._id} />, // Reference StudentsButtonHaver here
+    }));
 
   React.useEffect(() => {
     refetch();
@@ -147,7 +147,7 @@ const TeacherCourseDetails = () => {
       </Box>
       {courses?.data && courses?.data?.length > 0 && (
         <TableTemplate
-          buttonHaver={StudentsButtonHaver}
+          buttonHaver={(row) => row.actions}
           columns={courseColumns}
           rows={courseRows}
         />

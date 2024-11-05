@@ -94,17 +94,17 @@ const StudentProfile = () => {
   },[isSuccess]);
 
   useEffect(() => {
-    if (studentData?.data && Object.keys(studentData.data).length > 0) {
+    if (studentData?.data?.user && Object.keys(studentData.data).length > 0) {
       reset({
-        email: studentData?.data?.email ?? "",
-        name: studentData?.data?.name ?? "",
-        bio: studentData?.data?.bio ?? "",
-        phoneNumber: studentData?.data?.phoneNumber ?? "",
-        dateOfBirth: studentData?.data?.dateOfBirth,
+        email: studentData?.data?.user?.email ?? "",
+        name: studentData?.data?.user?.name ?? "",
+        bio: studentData?.data?.user?.bio ?? "",
+        phoneNumber: studentData?.data?.user?.phoneNumber ?? "",
+        dateOfBirth: studentData?.data?.user?.dateOfBirth,
       });
-      setAvatarSrc(studentData?.data?.profilePicture)
+      setAvatarSrc(studentData?.data?.user?.profilePicture)
     }
-  }, [studentData?.data]);
+  }, [studentData?.data?.user]);
 
   return (
     <>
