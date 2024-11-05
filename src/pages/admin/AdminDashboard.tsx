@@ -25,6 +25,7 @@ import AccountMenu from "../../components/AccountMenu";
 import LogoUpload from "./logoUpload.tsx";
 import AdminChat from "./AdminChat.tsx";
 import InvestmentRequests from "./InvestingRequests.tsx";
+import { color } from "framer-motion";
 
 
 const AdminDashboard = () => {
@@ -37,7 +38,7 @@ const AdminDashboard = () => {
     <>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar open={open} position="absolute">
+        <AppBar open={open} position="absolute" sx={{ backgroundColor: '#161e2f', boxShadow: 'none' }} >
           <Toolbar sx={{ pr: "24px" }}>
             <IconButton
               edge="start"
@@ -46,6 +47,7 @@ const AdminDashboard = () => {
               onClick={toggleDrawer}
               sx={{
                 marginRight: "36px",
+                color: '#fff',
                 ...(open && { display: "none" }),
               }}
             >
@@ -66,11 +68,16 @@ const AdminDashboard = () => {
         <Drawer
           variant="permanent"
           open={open}
-          sx={open ? styles.drawerStyled : styles.hideDrawer}
+          sx={{
+            "& .MuiDrawer-paper": {
+              backgroundColor: "#161e2f",
+            },
+            ...open ? styles.drawerStyled : styles.hideDrawer
+          }}
         >
-          <Toolbar sx={styles.toolBarStyled}>
+          <Toolbar sx={{ backgroundColor: '#161e2f', ...styles.toolBarStyled }}>
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon style={{ color: '#fff' }} />
             </IconButton>
           </Toolbar>
           <Divider />
@@ -86,7 +93,7 @@ const AdminDashboard = () => {
             <Route path="/Admin/dashboard" element={<AdminHomePage />} />
             <Route path="/Admin/profile" element={<AdminProfile />} />
             <Route path="/Admin/chat" element={<AdminChat />} />
-            <Route path="/Admin/investing_requests" element={<InvestmentRequests/>} />
+            <Route path="/Admin/investing_requests" element={<InvestmentRequests />} />
 
 
             {/* Subject */}
@@ -120,7 +127,7 @@ const AdminDashboard = () => {
             <Route path="/logout" element={<Logout />} />
           </Routes>
         </Box>
-      </Box>
+      </Box >
     </>
   );
 };

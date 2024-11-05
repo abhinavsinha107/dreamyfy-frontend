@@ -6,6 +6,7 @@ import { notifyError, notifySuccess } from "../toast";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import InnerVideobanner from "../components/VideoBanner/InnerVideobanner";
+import Footer from "../components/Footer/Footer";
 
 interface TutorFormData {
   name: string;
@@ -181,6 +182,7 @@ const BecomeATutor: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

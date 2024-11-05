@@ -21,6 +21,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../yup";
 import { useRegisterMutation } from "../services/api";
 import { notifySuccess, notifyError } from "../toast";
+import Header from "../components/Header";
+import Footer from "../components/Footer/Footer";
 
 const defaultTheme = createTheme();
 
@@ -63,132 +65,137 @@ const RegisterPage = () => {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
-        <CssBaseline />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography variant="h4" sx={{ mb: 2, color: "#2c2143" }}>
-              Register
-            </Typography>
+    <>
+      <Header />
+      <ThemeProvider theme={defaultTheme}>
+        <Grid container component="main" sx={{ height: "100vh" }}>
+          <CssBaseline />
+          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
             <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit(onSubmit)}
-              sx={{ mt: 2 }}
+              sx={{
+                my: 8,
+                mx: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
-              <Controller
-                name="name"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="name"
-                    label="Enter your name"
-                    autoComplete="name"
-                    autoFocus
-                    error={!!errors.name}
-                    helperText={errors.name ? errors.name.message : ""}
-                  />
-                )}
-              />
-              <Controller
-                name="email"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Enter your email"
-                    autoComplete="email"
-                    error={!!errors.email}
-                    helperText={errors.email ? errors.email.message : ""}
-                  />
-                )}
-              />
-              <Controller
-                name="password"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    margin="normal"
-                    required
-                    fullWidth
-                    label="Password"
-                    type={toggle ? "text" : "password"}
-                    id="password"
-                    autoComplete="current-password"
-                    error={!!errors.password}
-                    helperText={errors.password ? errors.password.message : ""}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton onClick={() => setToggle(!toggle)}>
-                            {toggle ? <Visibility /> : <VisibilityOff />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                )}
-              />
-              <LightPurpleButton
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+              <Typography variant="h4" sx={{ mb: 2, color: "#2c2143" }}>
+                Register
+              </Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit(onSubmit)}
+                sx={{ mt: 2 }}
               >
-                {isLoading ? (
-                  <CircularProgress size={24} color="inherit" />
-                ) : (
-                  "Register"
-                )}
-              </LightPurpleButton>
-              <Grid container>
-                <Grid>Already have an account?</Grid>
-                <Grid item sx={{ ml: 2 }}>
-                  <StyledLink to="/login">Log in</StyledLink>
+                <Controller
+                  name="name"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="name"
+                      label="Enter your name"
+                      autoComplete="name"
+                      autoFocus
+                      error={!!errors.name}
+                      helperText={errors.name ? errors.name.message : ""}
+                    />
+                  )}
+                />
+                <Controller
+                  name="email"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="email"
+                      label="Enter your email"
+                      autoComplete="email"
+                      error={!!errors.email}
+                      helperText={errors.email ? errors.email.message : ""}
+                    />
+                  )}
+                />
+                <Controller
+                  name="password"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      margin="normal"
+                      required
+                      fullWidth
+                      label="Password"
+                      type={toggle ? "text" : "password"}
+                      id="password"
+                      autoComplete="current-password"
+                      error={!!errors.password}
+                      helperText={errors.password ? errors.password.message : ""}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton onClick={() => setToggle(!toggle)}>
+                              {toggle ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  )}
+                />
+                <LightPurpleButton
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  {isLoading ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (
+                    "Register"
+                  )}
+                </LightPurpleButton>
+                <Grid container>
+                  <Grid>Already have an account?</Grid>
+                  <Grid item sx={{ ml: 2 }}>
+                    <StyledLink to="/login">Log in</StyledLink>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </Box>
             </Box>
-          </Box>
+          </Grid>
+          <Grid
+            item
+            xs={false}
+            sm={4}
+            md={7}
+            sx={{
+              backgroundImage: `url(${bgpic})`,
+              backgroundRepeat: "no-repeat",
+              backgroundColor: (t) =>
+                t.palette.mode === "light"
+                  ? t.palette.grey[50]
+                  : t.palette.grey[900],
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
         </Grid>
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: `url(${bgpic})`,
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-      </Grid>
-    </ThemeProvider>
+      </ThemeProvider>
+      <Footer />
+    </>
+
   );
 };
 

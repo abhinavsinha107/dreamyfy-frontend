@@ -10,6 +10,7 @@ import {
   MenuItem,
   Box,
   Button,
+  Container,
 } from "@mui/material";
 import { BlackButton } from "../../components/buttonStyles";
 import TableTemplate from "../../components/TableTemplate";
@@ -104,9 +105,9 @@ const TeacherCourseDetails = () => {
                         key={option}
                         disabled={index === 2}
                         selected={index === selectedIndex}
-                        // onClick={(event) => {
-                        //   handleMenuItemClick(event, index);
-                        // }}
+                      // onClick={(event) => {
+                      //   handleMenuItemClick(event, index);
+                      // }}
                       >
                         {option}
                       </MenuItem>
@@ -127,31 +128,45 @@ const TeacherCourseDetails = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          margin: "1rem",
-        }}
-      >
-        <Typography variant="h5" gutterBottom mt={1}>
-          Your Courses:
-        </Typography>
-        <Button
-          variant="contained"
-          onClick={() => navigate("/Teacher/add-course")}
-          sx={{ margin: "2px 3px 1px" }}
+      <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingY: 2,
+
+          }}
         >
-          Add Course
-        </Button>
-      </Box>
-      {courses?.data && courses?.data?.length > 0 && (
-        <TableTemplate
-          buttonHaver={StudentsButtonHaver}
-          columns={courseColumns}
-          rows={courseRows}
-        />
-      )}
+          <Typography variant="h5" gutterBottom mt={1}>
+            Your Courses
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{
+              boxShadow: 'none',
+              borderRadius: 20,
+              backgroundColor: '#d8b74e',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: '#161e2f',
+              },
+              '&:focus': {
+                backgroundColor: '#161e2f',
+              },
+            }}
+            onClick={() => navigate("/Teacher/add-course")}
+          >
+            Add Course
+          </Button>
+        </Box>
+        {courses?.data && courses?.data?.length > 0 && (
+          <TableTemplate
+            buttonHaver={StudentsButtonHaver}
+            columns={courseColumns}
+            rows={courseRows}
+          />
+        )}
+      </Container>
     </Paper>
   );
 };

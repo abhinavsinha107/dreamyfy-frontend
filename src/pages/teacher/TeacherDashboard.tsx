@@ -40,7 +40,7 @@ const TeacherDashboard = () => {
     <>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar open={open} position="absolute">
+        <AppBar open={open} position="absolute" sx={{ backgroundColor: '#161e2f', boxShadow: 'none' }}>
           <Toolbar sx={{ pr: "24px" }}>
             <IconButton
               edge="start"
@@ -49,6 +49,7 @@ const TeacherDashboard = () => {
               onClick={toggleDrawer}
               sx={{
                 marginRight: "36px",
+                color: '#fff',
                 ...(open && { display: "none" }),
               }}
             >
@@ -69,11 +70,16 @@ const TeacherDashboard = () => {
         <Drawer
           variant="permanent"
           open={open}
-          sx={open ? styles.drawerStyled : styles.hideDrawer}
+          sx={{
+            "& .MuiDrawer-paper": {
+              backgroundColor: "#161e2f",
+            },
+            ...open ? styles.drawerStyled : styles.hideDrawer
+          }}
         >
           <Toolbar sx={styles.toolBarStyled}>
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon style={{ color: '#fff' }} />
             </IconButton>
           </Toolbar>
           <Divider />
@@ -92,7 +98,7 @@ const TeacherDashboard = () => {
             {/* <Route path="/Teacher/complain" element={<TeacherComplain />} /> */}
 
             <Route path="/Teacher/course" element={<TeacherCourseDetails />} />
-            <Route path="/Teacher/add-course" element={<TeacherAddCourse />} /> 
+            <Route path="/Teacher/add-course" element={<TeacherAddCourse />} />
             <Route path="/Teacher/edit-class/:classId" element={<EditClassForm />} />
             <Route path="/Teacher/class" element={<TeacherClassDetails />} />
             <Route path="/Teacher/add-class" element={<TeacherAddClass />} />

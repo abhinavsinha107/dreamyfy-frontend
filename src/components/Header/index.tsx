@@ -24,7 +24,7 @@ const Header = () => {
   const isHomePage: boolean = location.pathname === "/";
 
   const [isBarClicked, setIsBarClicked] = useState(false);
-  const [bgColor, setBgColor] = useState("bg-[#003366] bg-opacity-50");
+  const [bgColor, setBgColor] = useState("bg-[#161e2f]/100");
   const { data: currentMainLogo } = useFetchMainLogoQuery();
 
   const navigateToLoginPage = () => {
@@ -47,9 +47,9 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight) {
-        setBgColor("bg-[#161E2F]");
+        setBgColor("bg-[#161E2F]/100");
       } else {
-        setBgColor("bg-[#161E2F] bg-opacity-50");
+        setBgColor("bg-[#161E2F]");
       }
     };
 
@@ -64,10 +64,10 @@ const Header = () => {
     <>
       {!isMobile && (
         <header
-          className={`${styles.header} fixed
+          // className={`${styles.header} fixed
+          //   } h-[100px] flex items-center ${bgColor} backdrop-blur-lg`}
+          className={`${styles.header} ${!isHomePage ? "sticky bg-[#161e2f]/100" : `fixed bg-[#161e2f]/50`
             } h-[100px] flex items-center ${bgColor} backdrop-blur-lg`}
-        // className={`${styles.header} ${!isHomePage ? "fixed" : "sticky"
-        //   } h-[100px] flex items-center ${bgColor} backdrop-blur-lg`}
         >
           <div className="container mx-auto"
           // className={styles.container}
