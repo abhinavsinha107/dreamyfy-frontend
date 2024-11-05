@@ -91,7 +91,7 @@ const StudentProfile = () => {
     if (isSuccess) {
       notifySuccess("Profile pic uploaded successfully");
     }
-  },[isSuccess]);
+  }, [isSuccess]);
 
   useEffect(() => {
     if (studentData?.data && Object.keys(studentData.data).length > 0) {
@@ -108,11 +108,11 @@ const StudentProfile = () => {
 
   return (
     <>
-      <Container maxWidth="md" sx={{ marginTop: "2rem" }}>
-        <StyledPaper elevation={3}>
-          <Grid container spacing={2}>
+      <Container maxWidth="lg" className="my-6">
+        <StyledPaper elevation={0}>
+          <Grid container spacing={0}>
             <Grid item xs={12}>
-            <Box display="flex" justifyContent="center" position="relative">
+              <Box display="flex" justifyContent="center" position="relative">
                 <input
                   type="file"
                   accept="image/*"
@@ -125,6 +125,7 @@ const StudentProfile = () => {
                   sx={{
                     width: 150,
                     height: 150,
+                    border: '1px solid #ccc'
                   }}
                   src={avatarSrc || undefined}
                 >
@@ -138,7 +139,7 @@ const StudentProfile = () => {
                     height: "2.5rem",
                     position: "absolute",
                     bottom: "5px",
-                    left: "54%",
+                    left: "53%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -157,14 +158,16 @@ const StudentProfile = () => {
             </Grid>
             <Grid item xs={12}>
               <Box display="flex" justifyContent="center">
-                <Typography variant="h5" component="h2" textAlign="center">
+                <Typography variant="h5" component="h2" textAlign="center" sx={{
+                  marginTop: 2,
+                }}>
                   {getValues("name")}
                 </Typography>
               </Box>
             </Grid>
           </Grid>
         </StyledPaper>
-        <Card>
+        <Card elevation={0}>
           <CardContent>
             <Grid
               container
@@ -179,6 +182,17 @@ const StudentProfile = () => {
                 onClick={() => setIsDisable(false)}
                 variant="contained"
                 endIcon={<AddIcon />}
+                sx={{
+                  color: 'white',
+                  '&:hover': {
+                    backgroundColor: '#d8b74e',
+                    boxShadow: 'none',
+                  },
+                  '&:focus': {
+                    backgroundColor: '#d8b74e',
+                  },
+                  boxShadow: 'none', backgroundColor: '#161e2f', borderRadius: 40,
+                }}
               >
                 Edit
               </Button>
@@ -218,36 +232,6 @@ const StudentProfile = () => {
                 <Grid item xs={12} sm={6}>
                   <Typography variant="subtitle1" component="p">
                     <Controller
-                      name="email"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          label="Email"
-                          variant="outlined"
-                          sx={isDisable && { pointerEvents: "none" }}
-                          placeholder="Enter Your Email"
-                          fullWidth
-                        />
-                      )}
-                    />
-                  </Typography>
-                  {errors?.email && (
-                    <Typography
-                      sx={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginLeft: "10px",
-                      }}
-                    >
-                      {errors?.email?.message}
-                    </Typography>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Typography variant="subtitle1" component="p">
-                    <Controller
                       name="phoneNumber"
                       control={control}
                       defaultValue=""
@@ -272,6 +256,36 @@ const StudentProfile = () => {
                       }}
                     >
                       {errors?.phoneNumber?.message}
+                    </Typography>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Typography variant="subtitle1" component="p">
+                    <Controller
+                      name="email"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          label="Email"
+                          variant="outlined"
+                          sx={isDisable && { pointerEvents: "none" }}
+                          placeholder="Enter Your Email"
+                          fullWidth
+                        />
+                      )}
+                    />
+                  </Typography>
+                  {errors?.email && (
+                    <Typography
+                      sx={{
+                        color: "red",
+                        fontSize: "12px",
+                        marginLeft: "10px",
+                      }}
+                    >
+                      {errors?.email?.message}
                     </Typography>
                   )}
                 </Grid>
@@ -309,7 +323,17 @@ const StudentProfile = () => {
                 </Grid>
               </Grid>
               <Box sx={{ textAlign: "end", marginTop: "1rem" }}>
-                <Button type="submit" variant="contained">
+                <Button type="submit" variant="contained" sx={{
+                  color: 'white',
+                  '&:hover': {
+                    backgroundColor: '#d8b74e',
+                    boxShadow: 'none',
+                  },
+                  '&:focus': {
+                    backgroundColor: '#d8b74e',
+                  },
+                  boxShadow: 'none', backgroundColor: '#161e2f', borderRadius: 40,
+                }}>
                   SUBMIT
                 </Button>
               </Box>

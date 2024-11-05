@@ -6,6 +6,7 @@ import {
   MenuItem,
   ListItemIcon,
   Tooltip,
+  Container,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
@@ -70,6 +71,7 @@ const ShowClasses = () => {
         </IconButton>
         <BlueButton
           variant="contained"
+          sx={{ borderRadius: 20 }}
           onClick={() => navigate("/Admin/classes/class/" + row.id)}
         >
           View
@@ -151,7 +153,7 @@ const ShowClasses = () => {
               </GreenButton>
             </Box>
           ) : (
-            <>
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               {subjects?.data && subjects?.data?.length > 0 && (
                 <TableTemplate
                   buttonHaver={SclassButtonHaver}
@@ -160,7 +162,7 @@ const ShowClasses = () => {
                 />
               )}
               <SpeedDialTemplate actions={actions} />
-            </>
+            </Container>
           )}
         </>
       )}

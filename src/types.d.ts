@@ -186,6 +186,7 @@ interface ApproveCourseResponse {
 }
 interface GetUserDetails {
   data: {
+    user: any;
     _id: string;
     name: string;
     email: string;
@@ -245,7 +246,7 @@ interface GetTeacherClassDetails {
   _id: string;
   name: string;
   classLink: string;
-  course:{
+  course: {
     name: string;
   };
   description: string;

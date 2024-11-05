@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Paper, Typography, Box, Button, TextField, CircularProgress, Backdrop } from "@mui/material";
+import { Paper, Typography, Box, Button, TextField, CircularProgress, Backdrop, Container } from "@mui/material";
 import { useState } from "react";
 import { useCreateConnectedAccountMutation } from "../../services/api.ts";
 
@@ -33,18 +33,34 @@ const TeacherPaymentsPage = () => {
 
     return (
         <>
-            <Paper sx={{ width: "100%", padding: "1rem", marginTop: "2rem" }}>
+            {/* <Paper sx={{ width: "100%", padding: "1rem", marginTop: "2rem" }}> */}
+            <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
                 <Box
                     sx={{
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
+                        backgroundColor: '#fff',
+                        padding: 2,
+                        borderRadius: 2,
                         marginBottom: "1rem",
                     }}
                 >
                     <Typography variant="h5">Teacher Payments</Typography>
                     {!connectedAccount && (
-                        <Button variant="contained" onClick={handleCreateAccountClick}>
+                        <Button variant="contained" onClick={handleCreateAccountClick}
+                            sx={{
+                                color: 'white',
+                                '&:hover': {
+                                    backgroundColor: '#d8b74e',
+                                    boxShadow: 'none',
+                                },
+                                '&:focus': {
+                                    backgroundColor: '#d8b74e',
+                                },
+                                boxShadow: 'none', backgroundColor: '#161e2f', borderRadius: 40,
+                            }}
+                        >
                             {isLoading ? <CircularProgress size={24} color="inherit" /> : "Create Payment Account"}
                         </Button>
                     )}
@@ -61,7 +77,8 @@ const TeacherPaymentsPage = () => {
                         </Typography>
                     </Box>
                 )}
-            </Paper>
+            </Container>
+            {/* </Paper> */}
 
             {/* Backdrop to display while loading */}
             <Backdrop

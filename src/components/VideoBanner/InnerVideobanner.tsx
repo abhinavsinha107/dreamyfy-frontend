@@ -6,7 +6,7 @@ const InnerVideobanner = ({ bannerTitle }) => {
     const width = useWindowResize().width;
 
     return (
-        <div className="relative h-32 md:h-80">
+        <div className="relative h-32 md:h-40">
             <img
                 className="absolute top-0 left-0 w-full h-full object-cover"
                 src={videoUrl}

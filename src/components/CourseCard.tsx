@@ -26,7 +26,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
 
   return (
     <Card
-      sx={{ height: "100%", borderRadius: "10px", cursor: "pointer" }}
+      className="h-full !shadow-none hover:!shadow-xl shadow-slate-500 cursor-pointer !transition-all !duration-500 hover:-translate-y-2"
       onClick={() => navigate(`/Student/subjects/${_id}`)}
     >
       <Box
@@ -34,7 +34,6 @@ const CourseCard: React.FC<CourseCardProps> = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: 2,
         }}
       >
         <CardMedia
