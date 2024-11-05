@@ -23,7 +23,8 @@ const Header = () => {
   const isHomePage = location.pathname === "/";
 
   const [isBarClicked, setIsBarClicked] = useState(false);
-  const [bgColor, setBgColor] = useState("bg-[#161e2f] bg-opacity-100");
+  // const [bgColor, setBgColor] = useState("bg-[#161e2f] bg-opacity-100");
+  const [bgColor, setBgColor] = useState("bg-[#fff] ");
   const { data: currentMainLogo } = useFetchMainLogoQuery();
 
   const navigateToLoginPage = () => {
@@ -47,8 +48,10 @@ const Header = () => {
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight) {
         setBgColor("bg-[#161E2F]");
+        // setBgColor("bg-[#fff]")
       } else {
-        setBgColor("bg-[#161E2F] bg-opacity-50");
+        // setBgColor("bg-[#161E2F] bg-opacity-50");
+        setBgColor("bg-[#fff] ")
       }
     };
 
@@ -63,7 +66,7 @@ const Header = () => {
     <>
       {!isMobile && (
         <header
-          className={`${styles.header} fixed h-[100px] flex items-center justify-center ${bgColor} backdrop-blur-lg`}
+          className={`${styles.header} fixed h-[75px] flex items-center justify-center ${bgColor} backdrop-blur-lg px-8 w-full max-w-8xl`}
         >
           <div className="container mx-auto">
             <div className="row flex items-center justify-between">
@@ -73,14 +76,14 @@ const Header = () => {
               <div className="flex items-center gap-4 justify-center">
                 <button
                   onClick={() => navigate("/book-a-session")}
-                  className="flex items-center px-4 py-2 bg-[#F9C74F] text-black rounded-full hover:bg-white hover:text-black transition"
+                  className="flex items-center px-4 py-2 bg-[#fff] text-black rounded-full hover:bg-white hover:text-black transition"
                 >
                   <AiOutlineSchedule className="mr-2 text-2xl" /> 
                   Book a session
                 </button>
                 <button
                   onClick={() => navigate("/become-a-tutor")}
-                  className="flex items-center px-4 py-2 bg-[#F9C74F] text-black rounded-full hover:bg-white hover:text-black transition"
+                  className="flex items-center px-4 py-2 bg-[#fff] text-black rounded-full hover:bg-white hover:text-black transition"
                 >
                   <FaUsers className="mr-2 text-2xl" />
                   Become a tutor
@@ -88,7 +91,7 @@ const Header = () => {
 
                 <button
                   onClick={() => navigate("/join-us-form")}
-                  className="flex items-center px-4 py-2 bg-[#F9C74F] text-black rounded-full hover:bg-white hover:text-black transition"
+                  className="flex items-center px-4 py-2 bg-[#fff] text-black rounded-full hover:bg-white hover:text-black transition"
                 >
                   <IoShareSocial className="mr-2 text-2xl" />
                   Invest in us
@@ -98,7 +101,7 @@ const Header = () => {
                 {!user ? (
                   <button
                     onClick={navigateToLoginPage}
-                    className="flex items-center bg-[#F9C74F] text-black hover:bg-white hover:text-black transition-all duration-500 border-white font-semibold py-2 px-10 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl"
+                    className="flex items-center bg-[#ffd700] text-black hover:bg-white hover:text-black transition-all duration-500 border-white font-semibold py-2 px-10 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl"
                   >
                     <AiOutlineUser className="mr-2 text-2xl" /> {/* Add icon here */}
                     Login
