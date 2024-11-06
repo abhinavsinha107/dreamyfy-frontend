@@ -26,6 +26,7 @@ import LogoUpload from "./logoUpload.tsx";
 import AdminChat from "./AdminChat.tsx";
 import InvestmentRequests from "./InvestingRequests.tsx";
 import { color } from "framer-motion";
+import EditCourseForm from "../teacher/EditCourseForm.tsx";
 
 
 const AdminDashboard = () => {
@@ -108,6 +109,8 @@ const AdminDashboard = () => {
             <Route path="/Admin/classes" element={<ShowClasses />} />
             <Route path="/Admin/courses" element={<TeacherClassDetails />} />
             <Route path="/Admin/logo-update" element={<LogoUpload />} />
+            <Route path="/Teacher/edit-course/:courseId" element={<EditCourseForm/>} />
+            <Route path="/Teacher/course" element={<TeacherClassDetails />} />
 
             {/* Student */}
             {/* <Route path="/Admin/addstudents" element={<AddStudent situation="Student" />} />

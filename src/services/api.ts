@@ -59,6 +59,14 @@ export const api = createApi({
       providesTags: ["Subject"],
     }),
 
+    deleteSubject: builder.mutation<any, string>({
+      query: (subjectId) => ({
+        url: `subjects/${subjectId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Subject"],
+    }),
+
     getSubjectCourses: builder.query<any, void>({
       query: (body) => ({
         url: `filter/courses`,
@@ -341,5 +349,5 @@ export const {
   useUploadDocsMutation,
   useUpdateCourseMutation,
   useGetTeacherStatsQuery,
-
+  useDeleteSubjectMutation,
 } = api;

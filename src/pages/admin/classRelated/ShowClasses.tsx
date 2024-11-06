@@ -20,19 +20,20 @@ import AddCardIcon from "@mui/icons-material/AddCard";
 import styled from "styled-components";
 import SpeedDialTemplate from "../../../components/SpeedDialTemplate";
 import { RootState, useAppSelector } from "../../../redux/store";
-import { useGetAllSubjectsQuery } from "../../../services/api";
+import { useDeleteSubjectMutation, useGetAllSubjectsQuery } from "../../../services/api";
 
 const ShowClasses = () => {
   const navigate = useNavigate();
-
+  const [deleteSubject] = useDeleteSubjectMutation()
+  
   const currentUser = useAppSelector((state: RootState) => state.user.user);
 
   const adminID = currentUser?._id;
 
   const { data: subjects, isLoading } = useGetAllSubjectsQuery();
 
-  const deleteHandler = (deleteID: string) => {
-    console.log(deleteID);
+  const deleteHandler =async (deleteID: string) => {
+    await deleteSubject(deleteID)
   };
 
   const sclassColumns = [
@@ -69,13 +70,13 @@ const ShowClasses = () => {
         <IconButton onClick={() => deleteHandler(row.id)} color="secondary">
           <DeleteIcon color="error" />
         </IconButton>
-        <BlueButton
+        {/* <BlueButton
           variant="contained"
           sx={{ borderRadius: 20 }}
           onClick={() => navigate("/Admin/classes/class/" + row.id)}
         >
           View
-        </BlueButton>
+        </BlueButton> */}
         <ActionMenu actions={actions} />
       </ButtonContainer>
     );
