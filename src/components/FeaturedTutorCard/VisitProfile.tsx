@@ -72,53 +72,53 @@ const VisitProfile: React.FC = () => {
                     Phone: {teacher.data.user.phoneNumber}
                   </p>
                 )}
-                <div className="mt-2 flex space-x-2">
+                {/* <div className="mt-2 flex space-x-2">
                   <span className="text-sm font-medium bg-white text-green-700 px-2 py-1 rounded">Science</span>
                   <span className="text-sm font-medium bg-white text-green-700 px-2 py-1 rounded">Biology</span>
                   <span className="text-sm font-medium text-gray-700 px-2 py-1 rounded">+12 more</span>
-                </div>
+                </div> */}
 
                 {/* Rating and Stats */}
                 <div className="mt-4 space-y-2 text-gray-600 text-sm">
                   <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>⭐</span> 5.0 (<a href="#" className="text-blue-500">31 reviews</a>)</p>
                   <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>✔️</span> Background check</p>
-                  <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>📚</span> 900+ hours taught</p>
+                  {/* <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>📚</span> 900+ hours taught</p>
                   <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>🔄</span> 62 repeat students</p>
-                  <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>⏱</span> Replies in 18 minutes</p>
+                  <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>⏱</span> Replies in 18 minutes</p> */}
                   <p className='flex items-center gap-3 text-base'><span className='w-8 h-8 flex justify-center items-center rounded-md bg-slate-200'>🏅</span> Qualified teacher</p >
                   {/* <p><a href="#" className="text-blue-500">Offers free video chat</a></p> */}
                 </div >
               </div >
               {/* Pricing and Availability */}
               < div className="w-full md:w-4/12 bg-white p-6 rounded-xl" >
-                <div className="flex justify-between items-center">
+                {/* <div className="flex justify-between items-center">
                   <div className="text-4xl font-medium text-[#161E2F]">£77 <span className="text-lg font-medium">per hour</span></div>
                   <div className="mt-2 flex items-center text-gray-700">
                     <span className="text-sm font-medium bg-green-100 text-green-700 px-2 py-1 rounded">⭐ 5.0</span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="mt-4">
                   <h3 className="text-gray-800 font-semibold text-xl">Online Lessons</h3>
                   <p className="text-base">{teacher.data.user.name} is available for regular online lessons on:</p>
                   <div className="flex gap-5 w-full">
-                    <div className="grid grid-cols-1 grid-rows-4 gap-3 text-center mt-2">
+                    {/* <div className="grid grid-cols-1 grid-rows-4 gap-3 text-center mt-2">
                       <div className="text-sm font-semibold text-gray-500"></div>
                       <div className="text-sm font-semibold text-gray-500">Morning</div>
                       <div className="text-sm font-semibold text-gray-500">Afternoon</div>
                       <div className="text-sm font-semibold text-gray-500">Evening</div>
-                    </div>
+                    </div> */}
                     <div className="grid grid-cols-7 gap-3 text-center mt-2 w-full">
-                      <div className="text-sm font-semibold text-gray-500">Mon</div>
+                      {/* <div className="text-sm font-semibold text-gray-500">Mon</div>
                       <div className="text-sm font-semibold text-gray-500">Tue</div>
                       <div className="text-sm font-semibold text-gray-500">Wed</div>
                       <div className="text-sm font-semibold text-gray-500">Thu</div>
                       <div className="text-sm font-semibold text-gray-500">Fri</div>
                       <div className="text-sm font-semibold text-gray-500">Sat</div>
-                      <div className="text-sm font-semibold text-gray-500">Sun</div>
+                      <div className="text-sm font-semibold text-gray-500">Sun</div> */}
 
                       {/* Availability dots */}
-                      {[true, false, true, true, false, false, true].map((available, idx) => (
+                      {/* {[true, false, true, true, false, false, true].map((available, idx) => (
                         <div key={idx} className={`h-4 w-4 rounded-full mx-auto ${available ? 'bg-[#161E2F]' : 'bg-green-200'}`} />
                       ))}
                       {[true, true, false, true, true, false, true].map((available, idx) => (
@@ -126,7 +126,7 @@ const VisitProfile: React.FC = () => {
                       ))}
                       {[true, false, true, false, true, false, true].map((available, idx) => (
                         <div key={idx} className={`h-4 w-4 rounded-full mx-auto ${available ? 'bg-[#161E2F]' : 'bg-green-200'}`} />
-                      ))}
+                      ))} */}
                     </div>
                   </div>
                 </div>
