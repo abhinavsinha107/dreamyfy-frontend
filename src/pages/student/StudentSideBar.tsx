@@ -27,39 +27,106 @@ const StudentSideBar = () => {
   return (
     <>
       <React.Fragment>
-        <ListItemButton component={Link} to="/">
+        <ListItemButton component={Link} to="/"
+          sx={{
+            backgroundColor: location.pathname === "/" ||
+              location.pathname === "/Student/dashboard" ? "#D8B74E" : "transparent",
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#D8B74E',
+            },
+            '&:focus': {
+              backgroundColor: '#D8B74E',
+            },
+            '&.Mui-selected': {
+              backgroundColor: '#D8B74E',
+            },
+          }}
+        >
           <ListItemIcon>
             <HomeIcon
-              color={
-                location.pathname === "/" ||
-                location.pathname === "/Student/dashboard"
-                  ? "primary"
-                  : "inherit"
-              }
+              sx={{
+                backgroundColor: location.pathname === "/" ||
+                  location.pathname === "/Student/dashboard" ? "transparent" : "transparent",
+                color: 'white',
+                '&:hover': {
+                  color: 'white',
+                },
+                '&:focus': {
+                  color: 'white',
+                },
+                '&.Mui-selected': {
+                  color: 'white',
+                },
+              }}
             />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItemButton>
-        <ListItemButton component={Link} to="/Student/subjects">
+        <ListItemButton component={Link} to="/Student/subjects"
+          sx={{
+            backgroundColor: location.pathname === "/Student/subjects" ? "#D8B74E" : "transparent",
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#D8B74E',
+            },
+            '&:focus': {
+              backgroundColor: '#D8B74E',
+            },
+            '&.Mui-selected': {
+              backgroundColor: '#D8B74E',
+            },
+          }}
+        >
           <ListItemIcon>
             <AssignmentIcon
-              color={
-                location.pathname.startsWith("/Student/subjects")
-                  ? "primary"
-                  : "inherit"
-              }
+              sx={{
+                backgroundColor: location.pathname.startsWith("/Student/subjects") ? "transparent" : "transparent",
+                color: 'white',
+                '&:hover': {
+                  color: 'white',
+                },
+                '&:focus': {
+                  color: 'white',
+                },
+                '&.Mui-selected': {
+                  color: 'white',
+                },
+              }}
             />
           </ListItemIcon>
           <ListItemText primary="Courses" />
         </ListItemButton>
-        <ListItemButton component={Link} to="/Student/chat">
+        <ListItemButton component={Link} to="/Student/chat"
+          sx={{
+            backgroundColor: location.pathname === "/Student/chat" ? "#D8B74E" : "transparent",
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#D8B74E',
+            },
+            '&:focus': {
+              backgroundColor: '#D8B74E',
+            },
+            '&.Mui-selected': {
+              backgroundColor: '#D8B74E',
+            },
+          }}
+        >
           <ListItemIcon>
             <AssignmentIcon
-              color={
-                location.pathname.startsWith("/Student/chat")
-                  ? "primary"
-                  : "inherit"
-              }
+              sx={{
+                backgroundColor: location.pathname.startsWith("/Student/chat") ? "transparent" : "transparent",
+                color: 'white',
+                '&:hover': {
+                  color: 'white',
+                },
+                '&:focus': {
+                  color: 'white',
+                },
+                '&.Mui-selected': {
+                  color: 'white',
+                },
+              }}
             />
           </ListItemIcon>
           <ListItemText primary="Chat" />
@@ -91,17 +158,42 @@ const StudentSideBar = () => {
       </React.Fragment>
       <Divider sx={{ my: 1 }} />
       <React.Fragment>
-        <ListSubheader component="div" inset>
+        <ListSubheader component="div" inset sx={{
+          backgroundColor: '#1c263b',
+          color: 'white',
+        }}>
           User
         </ListSubheader>
-        <ListItemButton component={Link} to="/Student/profile">
+        <ListItemButton component={Link} to="/Student/profile"
+          sx={{
+            backgroundColor: location.pathname === "/Student/profile" ? "#D8B74E" : "transparent",
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#D8B74E',
+            },
+            '&:focus': {
+              backgroundColor: '#D8B74E',
+            },
+            '&.Mui-selected': {
+              backgroundColor: '#D8B74E',
+            },
+          }}
+        >
           <ListItemIcon>
             <AccountCircleOutlinedIcon
-              color={
-                location.pathname.startsWith("/Student/profile")
-                  ? "primary"
-                  : "inherit"
-              }
+              sx={{
+                backgroundColor: location.pathname.startsWith("/Student/profile") ? "transparent" : "transparent",
+                color: 'white',
+                '&:hover': {
+                  color: 'white',
+                },
+                '&:focus': {
+                  color: 'white',
+                },
+                '&.Mui-selected': {
+                  color: 'white',
+                },
+              }}
             />
           </ListItemIcon>
           <ListItemText primary="Profile" />
@@ -113,12 +205,35 @@ const StudentSideBar = () => {
             dispatch(resetUser());
             navigate("/");
           }}
+          sx={{
+            backgroundColor: location.pathname === "/logout" ? "#D8B74E" : "transparent",
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#D8B74E',
+            },
+            '&:focus': {
+              backgroundColor: '#D8B74E',
+            },
+            '&.Mui-selected': {
+              backgroundColor: '#D8B74E',
+            },
+          }}
         >
           <ListItemIcon>
             <ExitToAppIcon
-              color={
-                location.pathname.startsWith("/logout") ? "primary" : "inherit"
-              }
+              sx={{
+                backgroundColor: location.pathname.startsWith("/logout") ? "transparent" : "transparent",
+                color: 'white',
+                '&:hover': {
+                  color: 'white',
+                },
+                '&:focus': {
+                  color: 'white',
+                },
+                '&.Mui-selected': {
+                  color: 'white',
+                },
+              }}
             />
           </ListItemIcon>
           <ListItemText primary="Logout" />

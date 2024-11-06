@@ -10,6 +10,7 @@ import {
   MenuItem,
   Box,
   Button,
+  Container,
 } from "@mui/material";
 import { BlackButton } from "../../components/buttonStyles";
 import TableTemplate from "../../components/TableTemplate";
@@ -127,21 +128,15 @@ const TeacherCourseDetails = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          margin: "1rem",
-        }}
-      >
-        <Typography variant="h5" gutterBottom mt={1}>
-          Your Courses:
-        </Typography>
-        <Button
-          variant="contained"
-          onClick={() => navigate("/Teacher/add-course")}
-          sx={{ margin: "2px 3px 1px" }}
-        >
+      <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingY: 2,
+
+          }}
+        ><Button>
           Add Course
         </Button>
       </Box>
@@ -152,6 +147,7 @@ const TeacherCourseDetails = () => {
           rows={courseRows}
         />
       )}
+      </Container>
     </Paper>
   );
 };

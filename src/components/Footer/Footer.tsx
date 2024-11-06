@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import mydreamfylogo from '../../assets/mydreamfy.png';
+import mydreamfylogo from "../../assets/mydreamfy.png";
 import {
   FaYoutube,
   FaFacebook,
-  FaTwitter,
   FaInstagram,
-  FaLinkedin,
 } from "react-icons/fa";
 
 function Footer() {
@@ -15,17 +13,33 @@ function Footer() {
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 flex flex-col gap-10 md:flex-row items-start">
         {/* Left Section */}
         <div className="mb-6 lg:mb-0 w-full md:w-4/12">
-          {/* <h2 className="text-xl font-bold mb-4">MyDreamFy</h2> */}
           <img src={mydreamfylogo} className="w-full max-w-60 mb-5" />
           <p className="text-sm mb-4">
-            We are ready to create stylish and beautiful prototypes for your future projects.
+            We are ready to create stylish and beautiful prototypes for your
+            future projects.
           </p>
           <div className="flex space-x-4 mt-4">
-            <FaYoutube className="text-white opacity-65 cursor-pointer hover:opacity-100 text-xl duration-500" />
-            <FaFacebook className="text-white opacity-65 cursor-pointer hover:opacity-100 text-xl duration-500" />
-            <FaTwitter className="text-white opacity-65 cursor-pointer hover:opacity-100 text-xl duration-500" />
-            <FaInstagram className="text-white opacity-65 cursor-pointer hover:opacity-100 text-xl duration-500" />
-            <FaLinkedin className="text-white opacity-65 cursor-pointer hover:opacity-100 text-xl duration-500" />
+            <a
+              href="https://www.youtube.com/@Mydreamfy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaYoutube className="text-white opacity-65 cursor-pointer hover:opacity-100 text-2xl duration-500" />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61567331833145"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebook className="text-white opacity-65 cursor-pointer hover:opacity-100 text-2xl duration-500" />
+            </a>
+            <a
+              href="https://www.instagram.com/mydreamfy.education/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram className="text-white opacity-65 cursor-pointer hover:opacity-100 text-2xl duration-500" />
+            </a>
           </div>
         </div>
 
@@ -35,50 +49,27 @@ function Footer() {
             <h3 className="font-semibold mb-5">Navigation</h3>
             <ul className="text-sm space-y-2 capitalize">
               <li>
-                <Link to="/business" className="hover:text-gray-400 duration-500">
-                  cult.fit for business
+                <Link
+                  to="/join-us-form"
+                  className="hover:text-gray-400 duration-500"
+                >
+                  invest in us
                 </Link>
               </li>
               <li>
-                <Link to="/franchise" className="hover:text-gray-400 duration-500">
-                  cult.fit franchise
+                <Link
+                  to="/become-a-tutor"
+                  className="hover:text-gray-400 duration-500"
+                >
+                  become a tutor
                 </Link>
               </li>
               <li>
-                <Link to="/partnerships" className="hover:text-gray-400 duration-500">
-                  corporate partnerships
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms-business" className="hover:text-gray-400 duration-500">
-                  t&c for business
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* More Links */}
-          <div className="w-full capitalize">
-            <h3 className="font-semibold mb-5">More</h3>
-            <ul className="text-sm space-y-2">
-              <li>
-                <Link to="/partner" className="hover:text-gray-400 duration-500">
-                  partner.fit
-                </Link>
-              </li>
-              <li>
-                <Link to="/blogs" className="hover:text-gray-400 duration-500">
-                  blogs
-                </Link>
-              </li>
-              <li>
-                <Link to="/security" className="hover:text-gray-400 duration-500">
-                  security
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="hover:text-gray-400 duration-500">
-                  careers
+                <Link
+                  to="/book-a-session"
+                  className="hover:text-gray-400 duration-500"
+                >
+                  book a session
                 </Link>
               </li>
             </ul>
@@ -91,15 +82,50 @@ function Footer() {
             <p className="text-sm mb-1">+1 (234) 567-89-00</p>
             <p className="text-sm">info@example.com</p>
           </div>
+
+          {/* More Links */}
+          <div className="w-full capitalize">
+            <ul className="text-sm space-y-2">
+              <div className="app-store-section">
+                <div className="app-store-buttons">
+                  <a
+                    href="https://play.google.com/store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <a
+                      href="https://www.apple.com/app-store/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_178,q_auto:eco,dpr_2,f_auto,fl_progressive//image/icons/cult/appstore.svg"
+                        alt="App Store"
+                        className="app-store-img"
+                        style={{ width: 200, height: "auto" }}
+                      />
+                    </a>
+                  </a>
+                  <a
+                    href="https://play.google.com/store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      alt="Google Play Store"
+                      className="google-play-img"
+                      style={{ width: 200, height: "auto", marginTop: 15 }}
+                    />
+                  </a>
+                </div>
+              </div>
+            </ul>
+          </div>
         </div>
       </div>
 
       {/* Bottom Section */}
-      {/* <div className="bg-gray-800 py-4">
-        <div className="container mx-auto text-center text-gray-400">
-          <p>© 2024 MyDreamFy. All rights reserved.</p>
-        </div>
-      </div> */}
       <div className="bg-gray-800 text-gray-400">
         <div className="container mx-auto py-4 px-6 flex flex-col md:flex-row-reverse justify-between items-center space-y-4 lg:space-y-0 lg:space-x-4">
           {/* Links Section */}

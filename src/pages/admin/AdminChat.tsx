@@ -4,6 +4,7 @@ import {
   useGetSessionsQuery,
 } from "../../services/api";
 import { useSocket } from "../../provider/SocketProvider";
+import { Container } from "@mui/material";
 
 interface Message {
   text: string;
@@ -91,136 +92,100 @@ const AdminChat: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "90vh",
-        margin: "1% auto",
-        width: "70%",
-      }}
-    >
+    <Container maxWidth="lg" className="my-5" style={{ display: 'flex', gap: 20, flexDirection: 'row' }}>
       {/* Users List */}
-      <div
-        style={{
-          width: "30%",
-          borderRight: "1px solid #ccc",
-          padding: "10px",
-          backgroundColor: "#f0f0f0",
-        }}
-      >
-        <h3 style={{ textAlign: "center" }}>Chat Requests</h3>
-        {sampleUsers.map((user) => (
-          <div
-            key={user?._id}
-            onClick={() => handleUserSelect(user?._id)}
-            style={{
-              padding: "10px",
-              cursor: "pointer",
-              borderRadius: "5px",
-              backgroundColor:
-                selectedUserId === user._id ? "#007bff" : "transparent",
-              color: selectedUserId === user._id ? "white" : "black",
-              transition: "background-color 0.3s",
-            }}
-          >
-            {user.name}
-          </div>
-        ))}
+      <div className="w-4/12 bg-white rounded-lg overflow-hidden">
+        <h3 className="p-3 px-5 bg-[#161e2f] text-white text-xl">Chat Requests</h3>
+        <div className="flex flex-col gap-3 p-5">
+          {sampleUsers.map((user) => (
+            <div
+              key={user?._id}
+              onClick={() => handleUserSelect(user?._id)}
+              className={`p-3 px-4 capitalize w-full cursor-pointer hover:text-white hover:bg-[#161e2f] transition-all duration-500 ${selectedUserId === user._id ? 'bg-[#161e2f] text-white' : ''} border rounded-full`}
+            >
+              {user.name}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Chat Area */}
-      <div style={{ width: "70%", padding: "10px" }}>
-        <div
-          style={{
-            padding: "10px",
-            borderBottom: "1px solid #ccc",
-            backgroundColor: "#007bff",
-            color: "white",
-            textAlign: "center",
-            borderRadius: "5px",
-            marginBottom: "10px",
-          }}
-        >
+      <div className="w-8/12 bg-white rounded-lg overflow-hidden">
+        <div className="p-3 px-5 bg-[#161e2f] text-white text-xl capitalize">
           Chat with{" "}
           {selectedUserId
             ? sampleUsers.find((user) => user._id === selectedUserId)?.name
             : "User"}
         </div>
+        <div className="p-5">
 
-        {/* Chat Messages */}
-        <div
-          style={{
-            flexGrow: 1,
-            overflowY: "auto",
-            padding: "10px",
-            border: "1px solid #e0e0e0",
-            borderRadius: "10px",
-            backgroundColor: "#f9f9f9",
-            marginBottom: "10px",
-            height: "60vh",
-          }}
-        >
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                justifyContent:
-                  message.sender === "admin" ? "flex-end" : "flex-start",
-                marginBottom: "10px",
-              }}
-            >
+          {/* Chat Messages */}
+          <div
+            style={{
+              flexGrow: 1,
+              overflowY: "auto",
+              padding: "10px",
+              border: "1px solid #e0e0e0",
+              borderRadius: "10px",
+              backgroundColor: "#f9f9f9",
+              marginBottom: "10px",
+              height: "60vh",
+            }}
+          >
+            {messages.map((message, index) => (
               <div
+                key={index}
                 style={{
-                  maxWidth: "70%",
-                  padding: "10px",
-                  borderRadius: "10px",
-                  backgroundColor:
-                    message.sender === "admin" ? "#007bff" : "#e0e0e0",
-                  color: message.sender === "admin" ? "white" : "black",
-                  textAlign: "left",
-                  wordWrap: "break-word",
-                  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+                  display: "flex",
+                  justifyContent:
+                    message.sender === "admin" ? "flex-end" : "flex-start",
+                  marginBottom: "10px",
                 }}
               >
-                {message.text}
+                <div
+                  style={{
+                    maxWidth: "70%",
+                    padding: "10px",
+                    borderRadius: "10px",
+                    backgroundColor:
+                      message.sender === "admin" ? "#007bff" : "#e0e0e0",
+                    color: message.sender === "admin" ? "white" : "black",
+                    textAlign: "left",
+                    wordWrap: "break-word",
+                    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  {message.text}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Chat Input and Send Button */}
-        {selectedUserId && (
-          <div style={{ display: "flex", marginTop: "10px" }}>
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              style={{
-                flexGrow: 1,
-                padding: "10px",
-                borderRadius: "20px",
-                border: "1px solid #ccc",
-                outline: "none",
-              }}
-              placeholder="Type your message..."
-            />
-            <button
-              onClick={handleSend}
-              style={{
-                marginLeft: "10px",
-                padding: "10px 20px",
-                backgroundColor: "#007bff",
-                color: "white",
-                border: "none",
-                borderRadius: "20px",
-                cursor: "pointer",
-              }}
-            >
-              Send
-            </button>
+            ))}
           </div>
-        )}
+
+          {/* Chat Input and Send Button */}
+          {selectedUserId && (
+            <div style={{ display: "flex", marginTop: "10px" }}>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                style={{
+                  flexGrow: 1,
+                  padding: "10px 20px",
+                  borderRadius: "60px",
+                  border: "1px solid #ccc",
+                  outline: "none",
+                }}
+                placeholder="Type your message..."
+              />
+              <button
+                onClick={handleSend}
+                className="bg-[#161e2f] px-5 text-white rounded-full ml-3"
+              >
+                Send
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Modal for session approval */}
@@ -288,7 +253,7 @@ const AdminChat: React.FC = () => {
           </div>
         </div>
       )}
-    </div>
+    </Container>
   );
 };
 

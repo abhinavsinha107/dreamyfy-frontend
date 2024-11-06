@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetChatDetailsQuery } from "../services/api";
 import { useSocket } from "../provider/SocketProvider";
 import { RootState, useAppSelector } from "../redux/store";
+import { Container } from "@mui/material";
 
 interface Message {
   text: string;
@@ -68,14 +69,7 @@ const StudentTeacherChat: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "90vh",
-        margin: "1% auto",
-        width: "70%",
-      }}
-    >
+    <Container maxWidth="lg" className="my-5" style={{ display: 'flex', gap: 20, flexDirection: 'row' }}>
       {/* Students List */}
       <div
         style={{
@@ -140,80 +134,108 @@ const StudentTeacherChat: React.FC = () => {
         >
           {messages.map((message, index) => (
             <div
-              key={index}
-              style={{
-                display: "flex",
-                justifyContent:
-                  message.sender === "TEACHER" && role === "TEACHER"
-                    ? "flex-end"
-                    : message.sender === "STUDENT" && role === "STUDENT"
-                    ? "flex-end"
-                    : "flex-start",
-                marginBottom: "10px",
-              }}
+              key={student._id}
+              onClick={() => handleStudentSelect(student._id)}
+              className={`p-3 px-4 capitalize w-full cursor-pointer hover:text-white hover:bg-[#161e2f] transition-all duration-500 ${selectedStudentId === student._id ? 'bg-[#161e2f] text-white' : ''} border rounded-full`}
             >
-              <div
-                style={{
-                  maxWidth: "70%",
-                  padding: "10px",
-                  borderRadius: "10px",
-                  backgroundColor:
-                    message.sender === "TEACHER" && role === "TEACHER"
-                      ? "#007bff"
-                      : message.sender === "STUDENT" && role === "STUDENT"
-                      ? "#007bff"
-                      : "#e0e0e0",
-                  color:
-                    message.sender === "TEACHER" && role === "TEACHER"
-                      ? "white"
-                      : message.sender === "STUDENT" && role === "STUDENT"
-                      ? "white"
-                      : "black",
-                  textAlign: "left",
-                  wordWrap: "break-word",
-                  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                {message.text}
-              </div>
+              {student.name}
             </div>
           ))}
         </div>
-
-        {/* Chat Input and Send Button */}
-        {selectedStudentId && (
-          <div style={{ display: "flex", marginTop: "10px" }}>
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              style={{
-                flexGrow: 1,
-                padding: "10px",
-                borderRadius: "20px",
-                border: "1px solid #ccc",
-                outline: "none",
-              }}
-              placeholder="Type your message..."
-            />
-            <button
-              onClick={handleSend}
-              style={{
-                marginLeft: "10px",
-                padding: "10px 20px",
-                backgroundColor: "#007bff",
-                color: "white",
-                border: "none",
-                borderRadius: "20px",
-                cursor: "pointer",
-              }}
-            >
-              Send
-            </button>
-          </div>
-        )}
       </div>
-    </div>
+
+      {/* Chat Area */}
+      <div className="w-8/12 bg-white rounded-lg overflow-hidden">
+        <div className="p-3 px-5 bg-[#161e2f] text-white text-xl capitalize">
+          Chat with{" "}
+          {selectedStudentId
+            ? data?.data?.find((student) => student._id === selectedStudentId)
+              ?.name
+            : "Student"}
+        </div>
+        <div className="p-5">
+          {/* Chat Messages */}
+          <div
+            style={{
+              flexGrow: 1,
+              overflowY: "auto",
+              padding: "10px",
+              border: "1px solid #e0e0e0",
+              borderRadius: "10px",
+              backgroundColor: "#f9f9f9",
+              marginBottom: "10px",
+              height: "60vh",
+            }}
+          >
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  justifyContent:
+                    message.sender === "TEACHER" && role === "TEACHER"
+                      ? "flex-end"
+                      : message.sender === "STUDENT" && role === "STUDENT"
+                        ? "flex-end"
+                        : "flex-start",
+                  marginBottom: "10px",
+                }}
+              >
+                <div
+                  style={{
+                    maxWidth: "70%",
+                    padding: "10px",
+                    borderRadius: "10px",
+                    backgroundColor:
+                      message.sender === "TEACHER" && role === "TEACHER"
+                        ? "#007bff"
+                        : message.sender === "STUDENT" && role === "STUDENT"
+                          ? "#007bff"
+                          : "#e0e0e0",
+                    color:
+                      message.sender === "TEACHER" && role === "TEACHER"
+                        ? "white"
+                        : message.sender === "STUDENT" && role === "STUDENT"
+                          ? "white"
+                          : "black",
+                    textAlign: "left",
+                    wordWrap: "break-word",
+                    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  {message.text}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Chat Input and Send Button */}
+          {selectedStudentId && (
+            <div style={{ display: "flex", marginTop: "10px" }}>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                style={{
+                  flexGrow: 1,
+                  padding: "10px",
+                  borderRadius: "20px",
+                  border: "1px solid #ccc",
+                  outline: "none",
+                }}
+                placeholder="Type your message..."
+              />
+              <button
+                onClick={handleSend}
+                className="bg-[#161e2f] px-5 text-white rounded-full ml-3"
+              >
+                Send
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </Container>
   );
 };
 

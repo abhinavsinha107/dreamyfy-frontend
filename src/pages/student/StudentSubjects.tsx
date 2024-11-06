@@ -43,7 +43,7 @@ const StudentSubjects = () => {
 
   return (
     <>
-      <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
+      <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 2 }} elevation={3}>
         <BottomNavigation value={selectedSection} onChange={handleSectionChange} showLabels>
           <BottomNavigationAction
             label="All Courses"
@@ -55,6 +55,7 @@ const StudentSubjects = () => {
                 <TableChartOutlinedIcon />
               )
             }
+
           />
           <BottomNavigationAction
             label="My Courses"
@@ -69,10 +70,10 @@ const StudentSubjects = () => {
           />
         </BottomNavigation>
       </Paper>
-      
+
       {/* Render courses based on selected section */}
       <Container>
-        <Typography variant="h4" align="center" gutterBottom mt={2}>
+        <Typography variant="h4" gutterBottom mt={2} className="px-4">
           {selectedSection === "All Courses" ? "All Courses" : "My Courses"}
         </Typography>
         {renderCourses()}
