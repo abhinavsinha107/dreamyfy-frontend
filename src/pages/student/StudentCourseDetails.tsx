@@ -73,7 +73,8 @@ const StudentCourseDetails: React.FC = () => {
                             <Button variant="outlined" sx={{marginLeft: 2, marginTop: 1}}>
                             Detailed Pdf
                             </Button>
-                          </a>}                
+                          </a>} 
+                          </Box>               
             </Paper>
 
             {/* Teacher Details Section */}
