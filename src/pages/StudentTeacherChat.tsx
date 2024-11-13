@@ -24,7 +24,6 @@ const StudentTeacherChat: React.FC = () => {
 
   const currentRole = currentUser?.role;
   const [roomId, setRoomId] = useState<string>("");
-  console.log("roomId", roomId);
   const [input, setInput] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   console.log("messages", messages);
@@ -100,7 +99,7 @@ const StudentTeacherChat: React.FC = () => {
       </div>
 
       {/* Chat Area */}
-      <div style={{ width: "70%", padding: "10px" }}>
+      {/* <div style={{ width: "70%", padding: "10px" }}>
         <div
           style={{
             padding: "10px",
@@ -117,10 +116,10 @@ const StudentTeacherChat: React.FC = () => {
             ? data?.data?.find((student) => student._id === selectedStudentId)
                 ?.name
                 : currentRole.toLowerCase() == 'student'?'Teacher':'Student'}
-        </div>
+        </div> */}
 
         {/* Chat Messages */}
-        <div
+        {/* <div
           style={{
             flexGrow: 1,
             overflowY: "auto",
@@ -141,8 +140,8 @@ const StudentTeacherChat: React.FC = () => {
               {student.name}
             </div>
           ))}
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
 
       {/* Chat Area */}
       <div className="w-8/12 bg-white rounded-lg overflow-hidden">
@@ -209,7 +208,6 @@ const StudentTeacherChat: React.FC = () => {
             ))}
           </div>
 
-          {/* Chat Input and Send Button */}
           {selectedStudentId && (
             <div style={{ display: "flex", marginTop: "10px" }}>
               <input
